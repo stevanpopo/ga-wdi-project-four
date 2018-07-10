@@ -1,8 +1,11 @@
 const routes = require('express').Router();
 
-const treatment = require('../controllers/treatments');
+const treatments = require('../controllers/treatments');
 
 routes.route('/treatments')
-  .get(treatment.index);
+  .get(treatments.index);
+
+routes.route('/treatments/:id')
+  .get(treatments.show);
 
 module.exports = routes;
