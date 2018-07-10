@@ -6,6 +6,13 @@ function indexRoute(req, res, next){
     .catch(next);
 }
 
+function showRoute(req, res, next){
+  Treatment.findById(req.params.id)
+    .then(treatment => res.json(treatment))
+    .catch(next);
+}
+
 module.exports = {
-  index: indexRoute
+  index: indexRoute,
+  show: showRoute
 };
