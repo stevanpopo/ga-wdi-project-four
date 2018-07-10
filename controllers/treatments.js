@@ -22,7 +22,7 @@ function updateRoute(req, res, next){
   Treatment.findById(req.params.id)
     .then(treatment => treatment.set(req.body))
     .then(treatment => treatment.save())
-    .then(treatment => treatment.json())
+    .then(treatment => res.json(treatment))
     .catch(next);
 }
 

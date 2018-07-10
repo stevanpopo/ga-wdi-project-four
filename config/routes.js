@@ -7,6 +7,7 @@ routes.route('/treatments')
   .post(treatments.create);
 
 routes.route('/treatments/:id')
-  .get(treatments.show);
+  .get(treatments.show)
+  .put(treatments.update);
 
 module.exports = routes;
