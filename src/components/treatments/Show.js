@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class TreatmentsShow extends React.Component{
   constructor(){
@@ -23,6 +24,8 @@ class TreatmentsShow extends React.Component{
         <p>{moment(this.state.treatment.dateTime).format('YYYY-MM-DD HH:mm:ss')}</p>
         <p>{this.state.treatment.notes}</p>
         <p>{this.state.treatment.completed}</p>
+        <Link to={`/treatments/${this.state.treatment._id}/edit`} className="button">Edit</Link>
+        <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
       </section>
     );
   }
