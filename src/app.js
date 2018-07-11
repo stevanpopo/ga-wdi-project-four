@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import Home from './components/Home';
 import TreatmentsIndex from './components/treatments/Index';
 
 import 'bulma';
@@ -16,7 +17,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Switch>
             <section className="section">
-              <div className="columns">
+              <div className="container">
                 <Route path="/treatments" component={TreatmentsIndex} />
               </div>
             </section>
