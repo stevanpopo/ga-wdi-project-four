@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
+import Navbar from './common/Navbar';
 import TreatmentsIndex from './components/treatments/Index';
 import TreatmentsShow from './components/treatments/Show';
 import TreatmentsNew from './components/treatments/New';
@@ -16,6 +17,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <main>
+          <Navbar />
           <h1>YourCare</h1>
           <Route exact path="/" component={Home} />
           <section className="section">
