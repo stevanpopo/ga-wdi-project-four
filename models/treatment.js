@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const treatmentSchema = new mongoose.Schema({
-  dateTime: { type: Date, required: true },
+  dateTime: { type: Date },
   title: { type: String, required: true },
-  completed: { type: Boolean, required: true, default: false },
+  completed: { type: Boolean, default: false },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  image: { type: String, required: true },
+  image: { type: String },
   notes: { type: String }
 });
 
