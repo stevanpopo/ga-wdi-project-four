@@ -14,16 +14,17 @@ class TreatmentsEdit extends React.Component{
   componentDidMount(){
     axios.get(`/api/treatments/${this.props.match.params.id}`)
       .then(res => {
-        this.setState({ data: res.data });
+        this.setState({ data: res.data }, () => console.log(this.state));
       })
       .catch(err => console.log('err', err));
   }
 
   handleChange = ({ target: { name, value }}) => {
     console.log('name & value', name, value);
-    this.setState({data: { [name]: value }});
-    // this.setState({[name]: value });
-    console.log('this.state', this.state);
+    const data = { ...this.state.data, [name]: value };
+    this.setState({ data }, () => console.log('this.state', this.state));
+    // this.setState({ [name]: value });
+
   }
 
   handleSubmit = (e) => {
@@ -38,7 +39,6 @@ class TreatmentsEdit extends React.Component{
   }
 
   render(){
-    if(!this.state.data.title) return <h2 className="title is-2">Loading..</h2>;
     return(
       <TreatmentsForm
         handleSubmit={this.handleSubmit}
