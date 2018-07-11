@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class TreatmentsNew extends React.Component{
   constructor(){
@@ -6,6 +7,26 @@ class TreatmentsNew extends React.Component{
     this.state = {};
   }
 
+  componentDidMount(){
+    axios.get('/treatments')
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => console.log('err', err));
+  }
+
+  render(){
+    return(
+      <section>
+        <div>
+          <form>
+            <div className="field">
+              <label className="label">Title</label>
+              <input className="input" />
+            </div>
+          </form>
+        </div>
+      </section>
+    );
+  }
 
 }
 
