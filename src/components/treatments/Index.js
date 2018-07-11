@@ -15,6 +15,13 @@ class TreatmentsIndex extends React.Component{
       .then(res => this.setState({ treatments: res.data }));
   }
 
+  render(){
+    return (
+      <section>
+        <h1>TreatmentsIndex</h1>
+      </section>
+    );
+  }
 }
 
 export default TreatmentsIndex;
