@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class App extends React.Component {
   render() {
     return (
-      <h1>WDI34 Project 4</h1>
+      <h1>YourCare</h1>
     );
   }
 }
