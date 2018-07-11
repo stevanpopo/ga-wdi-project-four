@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class TreatmentsIndex extends React.Component{
 
@@ -32,12 +33,18 @@ class TreatmentsIndex extends React.Component{
         <div className="columns is-multiline">
           {this.state.treatments.map(treatment =>
 
+
             <div key={treatment._id} className="column is-three-quarters">
-              <h2 className="title is-2">{treatment.title}</h2>
-              <p>{moment(treatment.dateTime).format('YYYY-MM-DD HH:mm:ss')}</p>
-              <p>{treatment.notes}</p>
-              <p>{treatment.completed}</p>
+              <Link to={`/treatments/${treatment._id}`}>
+                <div>
+                  <h2 className="title is-2">{treatment.title}</h2>
+                  <p>{moment(treatment.dateTime).format('YYYY-MM-DD HH:mm:ss')}</p>
+                  <p>{treatment.notes}</p>
+                  <p>{treatment.completed}</p>
+                </div>
+              </Link>
             </div>
+
           )}
 
         </div>
