@@ -15,9 +15,15 @@ class TreatmentsShow extends React.Component{
       .catch(err => console.log('err', err));
   }
 
+  handleDelete = () => {
+    axios.delete(`/api/treatments/${this.props.match.params.id}`)
+      .then(() => this.props.history.push('/treatments'))
+      .catch(err => console.log('err', err));
+  }
+
   render(){
     if(this.state.error) return <h2 className="title is-2">{this.state.error}</h2>;
-    if(!this.state.treatment) return <h1>Loading...</h1>;
+    if(!this.state.treatment) return <h2 className="title is-2">Loading...</h2>;
     return(
       <section>
         <h2 className="title is-2">{this.state.treatment.title}</h2>
