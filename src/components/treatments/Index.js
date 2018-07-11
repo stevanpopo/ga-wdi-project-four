@@ -15,16 +15,12 @@ class TreatmentsIndex extends React.Component{
   componentDidMount(){
     axios.get('/api/treatments')
       .then(res => {
-        console.log('res', res);
         this.setState({ treatments: res.data });
       })
       .catch(err => console.log('err', err));
   }
 
   render(){
-    console.log('this.treatments', this.treatments);
-    console.log('this.state.treatments', this.state.treatments);
-
     if(this.state.error) return <h2 className="title is-2">{this.state.error}</h2>;
     if(!this.state.treatments) return <h2 className="title is-2">Loading..</h2>;
     return (

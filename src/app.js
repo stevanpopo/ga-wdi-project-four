@@ -6,6 +6,7 @@ import Home from './components/Home';
 import TreatmentsIndex from './components/treatments/Index';
 import TreatmentsShow from './components/treatments/Show';
 import TreatmentsNew from './components/treatments/New';
+import TreatmentsEdit from './components/treatments/Edit';
 
 import 'bulma';
 import './scss/main.scss';
@@ -21,6 +22,7 @@ class App extends React.Component {
             <div className="container">
               <Switch>
                 <Route path="/treatments/new" component={TreatmentsNew} />
+                <Route path="/treatments/:id/edit" component={TreatmentsEdit} />
                 <Route path="/treatments/:id" component={TreatmentsShow} />
                 <Route path="/treatments" component={TreatmentsIndex} />
               </Switch>
