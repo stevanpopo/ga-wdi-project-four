@@ -17,6 +17,7 @@ class TreatmentsNew extends React.Component{
     return(
       <section>
         <div>
+          <h1>New Page</h1>
           <form>
             <div className="field">
               <label className="label">Title</label>

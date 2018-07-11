@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import TreatmentsIndex from './components/treatments/Index';
 import TreatmentsShow from './components/treatments/Show';
+import TreatmentsNew from './components/treatments/New';
 
 import 'bulma';
 import './scss/main.scss';
@@ -19,6 +20,7 @@ class App extends React.Component {
           <section className="section">
             <div className="container">
               <Switch>
+                <Route path="/treatments/new" component={TreatmentsNew} />
                 <Route path="/treatments/:id" component={TreatmentsShow} />
                 <Route path="/treatments" component={TreatmentsIndex} />
               </Switch>
