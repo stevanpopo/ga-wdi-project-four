@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import TreatmentsForm from './Form'
+
 class TreatmentsNew extends React.Component{
   constructor(){
     super();
@@ -20,7 +22,6 @@ class TreatmentsNew extends React.Component{
   // }
 
   handleChange = ({ target: { name, value }}) => {
-    console.log(name, value);
     this.setState({ [name]: value });
   }
 
@@ -37,31 +38,11 @@ class TreatmentsNew extends React.Component{
 
   render(){
     return(
-      <section>
-        <div>
-          <h1>New Page</h1>
-          <form onSubmit={this.handleSubmit}>
-            <div className="field">
-              <label className="label">Title</label>
-              <input className="input" name="title" placeholder="Title" onChange={this.handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Date & Time</label>
-              <input className="input" name="dateTime" placeholder="Date & Time" onChange={this.handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Image</label>
-              <input className="input" name="image" placeholder="Image" onChange={this.handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Notes</label>
-              <input className="input" name="notes" placeholder="Notes" onChange={this.handleChange} />
-            </div>
-
-            <button className="button">Submit</button>
-          </form>
-        </div>
-      </section>
+      <TreatmentsForm
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+        data={this.state}
+      />
     );
   }
 
