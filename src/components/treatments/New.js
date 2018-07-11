@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import TreatmentsForm from './Form'
+import TreatmentsForm from './Form';
 
 class TreatmentsNew extends React.Component{
   constructor(){
