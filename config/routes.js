@@ -15,4 +15,7 @@ routes.route('/treatments/:id')
 routes.route('/register')
   .post(auth.register);
 
+routes.route('/login')
+  .post(auth.login);
+
 module.exports = routes;

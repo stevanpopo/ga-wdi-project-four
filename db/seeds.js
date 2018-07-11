@@ -11,11 +11,13 @@ mongoose.connect(dbURI, (err, db) => {
     username: 'steve',
     email: 's@s.s',
     password: 's',
+    passwordConfirmation: 's',
     image: 'https://pbs.twimg.com/profile_images/826712998429458432/EOXWrevI.jpg'
   },{
     username: 'dave',
     email: 'd@d.d',
     password: 'd',
+    passwordConfirmation: 'd',
     image: 'https://res.cloudinary.com/jpress/image/fetch/c_fill,f_auto,h_584,q_auto:eco,w_920/https://inews.co.uk/wp-content/uploads/2018/05/Dave-rapper.jpg'
   }])
     .then(users => {
