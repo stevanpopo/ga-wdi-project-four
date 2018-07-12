@@ -8,7 +8,8 @@ class TreatmentsNew extends React.Component{
   constructor(){
     super();
     this.state = {
-      data: {}
+      data: {},
+      error: {}
     };
   }
 
@@ -25,7 +26,7 @@ class TreatmentsNew extends React.Component{
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(() => this.props.history.push('/treatments'))
-      .catch(err => console.log('err', err));
+      .catch(err => this.setState({ error: err.response.data.errors }));
   }
 
   render(){
