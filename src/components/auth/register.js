@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import Auth from '../../lib/Auth';
+
 class AuthRegister extends React.Component{
 
   state = {};
@@ -17,7 +19,7 @@ class AuthRegister extends React.Component{
       data: this.state
     })
       .then(res => {
-        // need to set token here
+        Auth.setToken(res.data.token);
         this.props.history.push('/login');
       })
       .catch(err => console.log('err', err));
@@ -25,30 +27,26 @@ class AuthRegister extends React.Component{
 
   render(){
     return(
-      <section>
-        <div>
-          <form>
-            <div className="field">
-              <label className="label">Username</label>
-              <input className="input" name="username" placeholder="Username" onChange={this.handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Email</label>
-              <input className="input" type="email" name="email" placeholder="Email" onChange={this.handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <input className="input" name="password" placeholder="Password" onChange={this.handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Password Confirmation</label>
-              <input className="input" name="passwordConfirmation" placeholder="Password Confirmation" onChange={this.handleChange} />
-            </div>
-
-            <button className="button">Register</button>
-          </form>
+      <form onSubmit={this.handleSubmit}>
+        <div className="field">
+          <label className="label">Email</label>
+          <input className="input" name="email" placeholder="Email" onChange={this.handleChange} />
         </div>
-      </section>
+        <div className="field">
+          <label className="label">Username</label>
+          <input className="input" name="username" placeholder="Username" onChange={this.handleChange} />
+        </div>
+        <div className="field">
+          <label className="label">Password</label>
+          <input className="input" type="password" name="password" placeholder="Password" onChange={this.handleChange} />
+        </div>
+        <div className="field">
+          <label className="label">Password Confirmation</label>
+          <input className="input" type="password" name="passwordConfirmation" placeholder="Password confirmation" onChange={this.handleChange} />
+        </div>
+
+        <button className="button">Submit</button>
+      </form>
     );
   }
 }
