@@ -29,6 +29,7 @@ routes.route('/login')
   .post(auth.login);
 
 routes.route('/profile/:id')
-  .get(users.show);
+  .get(users.show)
+  .put(users.update);
 
 module.exports = routes;
