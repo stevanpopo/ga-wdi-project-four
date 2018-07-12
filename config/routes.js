@@ -28,7 +28,7 @@ routes.route('/register')
 routes.route('/login')
   .post(auth.login);
 
-routes.route('/profile/:id')
+routes.route('/users/:id')
   .get(users.show)
   .put(users.update);
 

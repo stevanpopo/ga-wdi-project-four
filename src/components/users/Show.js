@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserShow extends React.Component{
+class UsersShow extends React.Component{
   state = {}
 
   render(){
@@ -12,4 +12,4 @@ class UserShow extends React.Component{
   }
 }
 
-export default UserShow;
+export default UsersShow;
