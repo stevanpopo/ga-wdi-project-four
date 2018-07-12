@@ -8,9 +8,9 @@ class Navbar extends React.Component{
     return(
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item">
+          <Link to='/' className="navbar-item">
             <img src="#" alt="Logo" width="112" height="28" />
-          </a>
+          </Link>
 
           <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
