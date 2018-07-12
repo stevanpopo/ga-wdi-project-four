@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TreatmentsForm = ({ handleSubmit, handleChange, data }) => {
-
+  console.log('data', data);
   return(
     <section>
       <div>
@@ -9,6 +9,7 @@ const TreatmentsForm = ({ handleSubmit, handleChange, data }) => {
           <div className="field">
             <label className="label">Title</label>
             <input className="input" name="title" placeholder="Title" onChange={handleChange} value={data.title || '' } />
+            {data.errors.title && <small>{data.errors.title}</small>}
           </div>
           <div className="field">
             <label className="label">Date & Time</label>
