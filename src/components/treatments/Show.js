@@ -3,6 +3,8 @@ import axios from 'axios';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
+import Auth from '../../lib/Auth';
+
 class TreatmentsShow extends React.Component{
   constructor(){
     super();
@@ -16,7 +18,11 @@ class TreatmentsShow extends React.Component{
   }
 
   handleDelete = () => {
-    axios.delete(`/api/treatments/${this.props.match.params.id}`)
+    axios({
+      url: `/api/treatments/${this.props.match.params.id}`,
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
       .then(() => this.props.history.push('/treatments'))
       .catch(err => console.log('err', err));
   }

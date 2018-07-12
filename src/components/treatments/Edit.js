@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+import Auth from '../../lib/Auth';
 import TreatmentsForm from './Form';
 
 class TreatmentsEdit extends React.Component{
@@ -32,7 +33,8 @@ class TreatmentsEdit extends React.Component{
     axios({
       method: 'PUT',
       url: `/api/treatments/${this.props.match.params.id}`,
-      data: this.state.data
+      data: this.state.data,
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(() => this.props.history.push('/treatments'))
       .catch(err => console.log('err', err));

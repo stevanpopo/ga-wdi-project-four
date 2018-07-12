@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Auth from '../../lib/Auth';
+import Flash from '../../lib/Flash';
 
 class AuthLogin extends React.Component{
   state = {};
@@ -19,10 +20,11 @@ class AuthLogin extends React.Component{
     })
       .then(res => {
         Auth.setToken(res.data.token);
+        console.log('token', res.data.token);
         this.props.history.push('/treatments');
       })
       .catch(() => {
-        // error flash message goes here
+        Flash.setMessage('danger', 'Incorrect credentials.');
         this.props.history.replace('/login');
       });
   }
