@@ -8,6 +8,7 @@ import TreatmentsIndex from './components/treatments/Index';
 import TreatmentsShow from './components/treatments/Show';
 import TreatmentsNew from './components/treatments/New';
 import TreatmentsEdit from './components/treatments/Edit';
+import AuthRegister from './components/auth/Register';
 
 import 'bulma';
 import './scss/main.scss';
@@ -27,6 +28,7 @@ class App extends React.Component {
                 <Route path="/treatments/:id/edit" component={TreatmentsEdit} />
                 <Route path="/treatments/:id" component={TreatmentsShow} />
                 <Route path="/treatments" component={TreatmentsIndex} />
+                <Route path="/register" component={AuthRegister} />
               </Switch>
             </div>
           </section>
