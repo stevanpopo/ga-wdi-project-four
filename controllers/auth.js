@@ -17,7 +17,7 @@ function login(req, res, next) {
 
       const token = jwt.sign({
         sub: user._id,
-        currentUser: user
+        currentUser: user // set currentUser in payload so we can access later
       },
       secret, { expiresIn: '6h' });
 

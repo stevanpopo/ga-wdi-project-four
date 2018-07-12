@@ -21,7 +21,6 @@ class App extends React.Component {
       <BrowserRouter>
         <main>
           <Navbar />
-          <h1>YourCare</h1>
           <Route exact path="/" component={Home} />
           <section className="section">
             <div className="container">

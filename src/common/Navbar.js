@@ -10,7 +10,8 @@ class Navbar extends React.Component{
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link to='/' className="navbar-item">
-            <img src="#" alt="Logo" width="112" height="28" />
+            {/* <img src="#" alt="Logo" width="112" height="28" /> */}
+            <h1>YourCare</h1>
           </Link>
 
           <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -21,6 +22,9 @@ class Navbar extends React.Component{
         </div>
 
         <div className="navbar-menu">
+          <div className="navbar-start">
+            { Auth.isAuthenticated() && <p className="navbar-item">Welcome back {Auth.getPayload().currentUser.username}</p>}
+          </div>
           {/* <div class="navbar-start">
             <a class="navbar-item" ng-if="isAuthenticated()" ui-sref="usersShow({ id: currentUser._id })">
               Welcome back { currentUser.username }
