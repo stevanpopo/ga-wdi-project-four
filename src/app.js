@@ -13,6 +13,7 @@ import TreatmentsEdit from './components/treatments/Edit';
 import AuthRegister from './components/auth/Register';
 import AuthLogin from './components/auth/Login';
 import UsersShow from './components/users/Show';
+import UsersEdit from './components/users/Edit';
 
 import 'bulma';
 import './scss/main.scss';
@@ -32,6 +33,7 @@ class App extends React.Component {
                 <ProtectedRoute path="/treatments/:id/edit" component={TreatmentsEdit} />
                 <Route path="/treatments/:id" component={TreatmentsShow} />
                 <Route path="/treatments" component={TreatmentsIndex} />
+                <Route path="/users/:id/edit" component={UsersEdit} />
                 <Route path="/users/:id" component={UsersShow} />
                 <Route path="/register" component={AuthRegister} />
                 <Route path="/login" component={AuthLogin} />
