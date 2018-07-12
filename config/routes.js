@@ -3,6 +3,7 @@ const routes = require('express').Router();
 const treatments = require('../controllers/treatments');
 const auth = require('../controllers/auth');
 const records = require('../controllers/records');
+const users = require('../controllers/users');
 
 const secureRoute = require('../lib/secureRoute');
 
@@ -26,5 +27,8 @@ routes.route('/register')
 
 routes.route('/login')
   .post(auth.login);
+
+routes.route('/profile/:id')
+  .get(users.show);
 
 module.exports = routes;
