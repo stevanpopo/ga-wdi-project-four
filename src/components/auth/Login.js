@@ -14,6 +14,8 @@ class AuthLogin extends React.Component{
           <label className="label">Password</label>
           <input className="input" name="password" placeholder="Password" onChange={this.handleChange} />
         </div>
+
+        <button className="button">Login</button>
       </form>
     );
   }

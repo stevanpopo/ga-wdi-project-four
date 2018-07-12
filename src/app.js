@@ -9,6 +9,7 @@ import TreatmentsShow from './components/treatments/Show';
 import TreatmentsNew from './components/treatments/New';
 import TreatmentsEdit from './components/treatments/Edit';
 import AuthRegister from './components/auth/Register';
+import AuthLogin from './components/auth/Login';
 
 import 'bulma';
 import './scss/main.scss';
@@ -29,6 +30,7 @@ class App extends React.Component {
                 <Route path="/treatments/:id" component={TreatmentsShow} />
                 <Route path="/treatments" component={TreatmentsIndex} />
                 <Route path="/register" component={AuthRegister} />
+                <Route path="/login" component={AuthLogin} />
               </Switch>
             </div>
           </section>
