@@ -5,7 +5,9 @@ import Auth from '../../lib/Auth';
 import Flash from '../../lib/Flash';
 
 class AuthLogin extends React.Component{
-  state = {};
+  state = {
+    errors: {}
+  };
 
   handleChange = ({ target: { name, value }}) => {
     this.setState({ [name]: value });
@@ -20,11 +22,11 @@ class AuthLogin extends React.Component{
     })
       .then(res => {
         Auth.setToken(res.data.token);
-        console.log('token', res.data.token);
         this.props.history.push('/treatments');
       })
-      .catch(() => {
+      .catch(()=> {
         Flash.setMessage('danger', 'Incorrect credentials.');
+        // this.setState({ errors: err.response.data.errors }); //err
         this.props.history.replace('/login');
       });
   }
@@ -35,6 +37,7 @@ class AuthLogin extends React.Component{
         <div className="field">
           <label className="label">Email</label>
           <input className="input" name="email" placeholder="Email" onChange={this.handleChange} />
+          {/* {this.state.errors.email && <small>{this.state.errors.email}</small>} */}
         </div>
         <div className="field">
           <label className="label">Password</label>

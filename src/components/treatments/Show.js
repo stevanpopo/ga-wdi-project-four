@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../lib/Auth';
+import Flash from '../../lib/Flash';
 
 class TreatmentsShow extends React.Component{
   constructor(){
@@ -24,7 +25,10 @@ class TreatmentsShow extends React.Component{
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(() => this.props.history.push('/treatments'))
-      .catch(err => console.log('err', err));
+      .catch(() => {
+        Flash.setMessage('danger', 'You must be logged in to delete treatments.');
+        this.props.history.replace('/login');
+      });
   }
 
   render(){

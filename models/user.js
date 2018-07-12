@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  email: { type: String, required: true },
-  password: { type: String, required: true },
+  username: { type: String, required: 'Username is a required field.' },
+  email: { type: String, required: 'Email is a required field.' },
+  password: { type: String, required: 'Password is a required field.' },
   image: { type: String }
 }, {
   id: false
