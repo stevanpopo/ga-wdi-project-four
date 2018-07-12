@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
-import Navbar from './common/Navbar';
-import ProtectedRoute from './common/ProtectedRoute';
+import Navbar from './components/common/Navbar';
+import ProtectedRoute from './components/common/ProtectedRoute';
 import TreatmentsIndex from './components/treatments/Index';
 import TreatmentsShow from './components/treatments/Show';
 import TreatmentsNew from './components/treatments/New';
