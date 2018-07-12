@@ -1,5 +1,17 @@
 class Auth{
 
+  static logout(){
+    localStorage.removeItem('token');
+  }
+
+  static getToken(){
+    return localStorage.getItem('token');
+  }
+
+  static setToken(token){
+    localStorage.setItem('token', token);
+  }
+
   static getPayload(){
     const token = this.getToken();
     if (!token) return null;
