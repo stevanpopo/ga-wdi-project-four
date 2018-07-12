@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const routes = require('./config/routes');
+const errorHandler = require('./lib/errorHandler');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
@@ -15,6 +16,8 @@ mongoose.connect(dbURI);
 
 app.use(bodyParser.json());
 app.use('/api', routes);
+app.use(errorHandler);
+
 app.listen(port, () => console.log(`Express running on port ${port}`));
 
 module.exports = app;

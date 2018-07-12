@@ -14,14 +14,17 @@ const TreatmentsForm = ({ handleSubmit, handleChange, data }) => {
           <div className="field">
             <label className="label">Date & Time</label>
             <input className="input" name="dateTime" placeholder="Date & Time" onChange={handleChange} value={data.dateTime || '' } />
+            {data.errors.dateTime && <small>{data.errors.dateTime}</small>}
           </div>
           <div className="field">
             <label className="label">Image</label>
             <input className="input" name="image" placeholder="Image" onChange={handleChange} value={data.image || '' } />
+            {data.errors.image && <small>{data.errors.image}</small>}
           </div>
           <div className="field">
             <label className="label">Notes</label>
             <input className="input" name="notes" placeholder="Notes" onChange={handleChange} value={data.notes || '' } />
+            {data.errors.notes && <small>{data.errors.notes}</small>}
           </div>
 
           <button className="button">Submit</button>
