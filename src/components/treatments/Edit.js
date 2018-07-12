@@ -8,7 +8,8 @@ class TreatmentsEdit extends React.Component{
   constructor(){
     super();
     this.state = {
-      data: {}
+      data: {},
+      errors: {}
     };
   }
 
@@ -23,9 +24,7 @@ class TreatmentsEdit extends React.Component{
   handleChange = ({ target: { name, value }}) => {
     console.log('name & value', name, value);
     const data = { ...this.state.data, [name]: value };
-    this.setState({ data }, () => console.log('this.state', this.state));
-    // this.setState({ [name]: value });
-
+    this.setState({ data });
   }
 
   handleSubmit = (e) => {
@@ -37,7 +36,7 @@ class TreatmentsEdit extends React.Component{
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(() => this.props.history.push('/treatments'))
-      .catch(err => console.log('err', err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render(){
