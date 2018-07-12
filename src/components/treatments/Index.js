@@ -22,7 +22,7 @@ class TreatmentsIndex extends React.Component{
 
   render(){
     if(this.state.error) return <h2 className="title is-2">{this.state.error}</h2>;
-    if(!this.state.treatments) return <h2 className="title is-2">Loading..</h2>;
+    if(!this.state.treatments) return <h2 className="title is-2">Loading...</h2>;
     return (
       <section className="section">
         <h1 className="title is-1">TreatmentsIndex</h1>

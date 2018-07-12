@@ -8,13 +8,13 @@ mongoose.connect(dbURI, (err, db) => {
   db.dropDatabase();
 
   User.create([{
-    username: 'steve',
+    username: 'Steve',
     email: 's@s.s',
     password: 's',
     passwordConfirmation: 's',
     image: 'https://pbs.twimg.com/profile_images/826712998429458432/EOXWrevI.jpg'
   },{
-    username: 'dave',
+    username: 'Dave',
     email: 'd@d.d',
     password: 'd',
     passwordConfirmation: 'd',
