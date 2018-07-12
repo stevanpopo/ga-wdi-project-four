@@ -2,6 +2,8 @@ const routes = require('express').Router();
 
 const treatments = require('../controllers/treatments');
 const auth = require('../controllers/auth');
+const records = require('../controllers/records');
+
 const secureRoute = require('../lib/secureRoute');
 
 routes.route('/treatments')
@@ -12,6 +14,9 @@ routes.route('/treatments/:id')
   .get(treatments.show)
   .put(secureRoute, treatments.update)
   .delete(secureRoute, treatments.delete);
+
+routes.route('/records')
+  .post(records.create);
 
 routes.route('/register')
   .post(auth.register);
