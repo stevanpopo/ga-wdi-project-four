@@ -1,9 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Auth from '../lib/Auth';
 
 class Navbar extends React.Component{
-  state = {}
+  state = {
+    navbarOpen: false
+  }
+
+  toggleNavbar = () => {
+    this.setState({ navbarOpen: !this.state.navbarOpen });
+  }
+
+  componentDidUpdate(prevProps){
+    console.log(prevProps.location.pathname);
+    if(prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({ navbarOpen: false });
+    }
+  }
 
   render(){
     return(
@@ -14,14 +27,18 @@ class Navbar extends React.Component{
             <h1>YourCare</h1>
           </Link>
 
-          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
+          <a role="button"
+            className={`navbar-burger${this.state.navbarOpen ? ' is-active': ''}`}
+            aria-label="menu"
+            aria-expanded="false"
+            onClick={this.toggleNavbar}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
         </div>
 
-        <div className="navbar-menu">
+        <div className={`navbar-menu${this.state.navbarOpen ? ' is-active': ''}`}>
           <div className="navbar-start">
             { Auth.isAuthenticated() && <p className="navbar-item">Welcome back {Auth.getPayload().currentUser.username}</p>}
           </div>
@@ -44,4 +61,4 @@ class Navbar extends React.Component{
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
