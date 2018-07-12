@@ -39,13 +39,8 @@ class Navbar extends React.Component{
 
         <div className={`navbar-menu${this.state.navbarOpen ? ' is-active': ''}`}>
           <div className="navbar-start">
-            { Auth.isAuthenticated() && <p className="navbar-item">Welcome back {Auth.getPayload().currentUser.username}</p>}
+            { Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().currentUser._id}`} className="navbar-item">Welcome back {Auth.getPayload().currentUser.username}</Link>}
           </div>
-          {/* <div class="navbar-start">
-            <a class="navbar-item" ng-if="isAuthenticated()" ui-sref="usersShow({ id: currentUser._id })">
-              Welcome back { currentUser.username }
-            </a>
-          </div> */}
           <div className="navbar-end">
             <Link to='/' className="navbar-item">Home</Link>
             <Link to='/treatments' className="navbar-item">Index</Link>
