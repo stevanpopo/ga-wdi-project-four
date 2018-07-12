@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../lib/Auth';
 
 class Navbar extends React.Component{
   state = {}
@@ -20,12 +21,18 @@ class Navbar extends React.Component{
         </div>
 
         <div className="navbar-menu">
+          {/* <div class="navbar-start">
+            <a class="navbar-item" ng-if="isAuthenticated()" ui-sref="usersShow({ id: currentUser._id })">
+              Welcome back { currentUser.username }
+            </a>
+          </div> */}
           <div className="navbar-end">
             <Link to='/' className="navbar-item">Home</Link>
             <Link to='/treatments' className="navbar-item">Index</Link>
-            <Link to='/treatments/new' className="navbar-item">New Treatment</Link>
-            <Link to='/register' className="navbar-item">Register</Link>
-            <Link to='/login' className="navbar-item">Login</Link>
+            { Auth.isAuthenticated() && <Link to='/treatments/new' className="navbar-item">New Treatment</Link>}
+            { !Auth.isAuthenticated() && <Link to='/register' className="navbar-item">Register</Link>}
+            { !Auth.isAuthenticated() && <Link to='/login' className="navbar-item">Login</Link>}
+            { Auth.isAuthenticated() && <Link to='/' className="navbar-item" onClick={Auth.logout}>Logout</Link>}
           </div>
         </div>
       </nav>
