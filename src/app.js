@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
 import Navbar from './common/Navbar';
+import ProtectedRoute from './common/ProtectedRoute';
 import TreatmentsIndex from './components/treatments/Index';
 import TreatmentsShow from './components/treatments/Show';
 import TreatmentsNew from './components/treatments/New';
@@ -25,8 +26,8 @@ class App extends React.Component {
           <section className="section">
             <div className="container">
               <Switch>
-                <Route path="/treatments/new" component={TreatmentsNew} />
-                <Route path="/treatments/:id/edit" component={TreatmentsEdit} />
+                <ProtectedRoute path="/treatments/new" component={TreatmentsNew} />
+                <ProtectedRoute path="/treatments/:id/edit" component={TreatmentsEdit} />
                 <Route path="/treatments/:id" component={TreatmentsShow} />
                 <Route path="/treatments" component={TreatmentsIndex} />
                 <Route path="/register" component={AuthRegister} />
