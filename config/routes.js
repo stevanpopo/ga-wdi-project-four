@@ -18,8 +18,11 @@ routes.route('/treatments/:id')
 routes.route('/records')
   .post(records.create);
 
+routes.route('/records/:id')
+  .put(records.update);
+
 routes.route('/register')
-  .post(auth.register);
+  .put(auth.register);
 
 routes.route('/login')
   .post(auth.login);
