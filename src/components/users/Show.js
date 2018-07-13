@@ -13,6 +13,15 @@ class UsersShow extends React.Component{
       chartWeight: {},
       chartBlood: {},
       chartGlucose: {},
+      // options: {
+      //   scales: {
+      //     yAxes: [{
+      //       ticks: {
+      //         beginAtZero: true
+      //       }
+      //     }]
+      //   }
+      // },
       formData: {}
     };
   }
@@ -131,15 +140,15 @@ class UsersShow extends React.Component{
           <div className="columns">
             <div className="column">
               <h4 className="title is-4">Weight</h4>
-              <Line data={this.state.chartWeight} />
+              <Line data={this.state.chartWeight} options={this.state.options}  />
             </div>
             <div className="column">
               <h4 className="title is-4">Blood</h4>
-              <Line data={this.state.chartBlood} />
+              <Line data={this.state.chartBlood} options={this.state.options} />
             </div>
             <div className="column">
               <h4 className="title is-4">Glucose</h4>
-              <Line data={this.state.chartGlucose} />
+              <Line data={this.state.chartGlucose} options={this.state.options} />
             </div>
           </div>
         </section>

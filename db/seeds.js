@@ -79,31 +79,31 @@ mongoose.connect(dbURI, (err, db) => {
         weight: 100,
         blood: 140,
         glucose: 7.8,
-        createdAt: new Date('July 17, 2018 06:00:00')
+        createdAt: new Date('July 7, 2018 06:00:00')
       }, {
         user: users[0],
         weight: 98,
         blood: 142,
         glucose: 7.2,
-        createdAt: new Date('July 19, 2018 06:00:00')
+        createdAt: new Date('July 9, 2018 06:00:00')
       }, {
         user: users[0],
         weight: 96,
         blood: 148,
         glucose: 7.6,
-        createdAt: new Date('July 21, 2018 06:00:00')
+        createdAt: new Date('July 10, 2018 06:00:00')
       }, {
         user: users[0],
         weight: 99,
         blood: 145,
         glucose: 8.6,
-        createdAt: new Date('July 23, 2018 06:00:00')
+        createdAt: new Date('July 11, 2018 06:00:00')
       },{
         user: users[0],
         weight: 98,
         blood: 146,
         glucose: 8.4,
-        createdAt: new Date('July 25, 2018 06:00:00')
+        createdAt: new Date('July 12, 2018 06:00:00')
       }]);
 
     })
