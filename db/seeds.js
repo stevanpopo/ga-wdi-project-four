@@ -77,21 +77,33 @@ mongoose.connect(dbURI, (err, db) => {
       return Record.create([{
         user: users[0],
         weight: 100,
-        blood: 90,
-        glucose: 80,
+        blood: 140,
+        glucose: 7.8,
         createdAt: new Date('July 17, 2018 06:00:00')
       }, {
         user: users[0],
         weight: 98,
-        blood: 88,
-        glucose: 78,
+        blood: 142,
+        glucose: 7.2,
         createdAt: new Date('July 19, 2018 06:00:00')
       }, {
         user: users[0],
         weight: 96,
-        blood: 86,
-        glucose: 76,
+        blood: 148,
+        glucose: 7.6,
         createdAt: new Date('July 21, 2018 06:00:00')
+      }, {
+        user: users[0],
+        weight: 99,
+        blood: 145,
+        glucose: 8.6,
+        createdAt: new Date('July 23, 2018 06:00:00')
+      },{
+        user: users[0],
+        weight: 98,
+        blood: 146,
+        glucose: 8.4,
+        createdAt: new Date('July 25, 2018 06:00:00')
       }]);
 
     })
