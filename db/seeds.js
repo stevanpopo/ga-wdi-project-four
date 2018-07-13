@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 const Treatment = require('../models/treatment');
+const Record = require('../models/record');
 const User = require('../models/user');
 
 mongoose.connect(dbURI, (err, db) => {
@@ -22,7 +23,7 @@ mongoose.connect(dbURI, (err, db) => {
   }])
     .then(users => {
       console.log(`${users.length} users created.`);
-      return Treatment.create([{
+      Treatment.create([{
         dateTime: new Date('July 17, 2018 06:00:00'),
         title: 'Morning pills x 3',
         completed: false,
@@ -72,6 +73,27 @@ mongoose.connect(dbURI, (err, db) => {
         image: 'https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1986133/580/386/m1/fpnw/wm0/calendar-flat-line-icon-01-.jpg',
         notes: 'Will do blood test and dialysis treatment.'
       }]);
+
+      return Record.create([{
+        user: users[0],
+        weight: 100,
+        blood: 90,
+        glucose: 80,
+        createdAt: new Date('July 17, 2018 06:00:00')
+      }, {
+        user: users[0],
+        weight: 98,
+        blood: 88,
+        glucose: 78,
+        createdAt: new Date('July 19, 2018 06:00:00')
+      }, {
+        user: users[0],
+        weight: 96,
+        blood: 86,
+        glucose: 76,
+        createdAt: new Date('July 21, 2018 06:00:00')
+      }]);
+
     })
     .then(treatments => console.log(`${treatments.length} treatments created`))
     .catch(err => console.log(err))

@@ -2,18 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
+import moment from 'moment';
 
 class UsersShow extends React.Component{
 
   constructor(){
     super();
     this.state = {
-      chartData: {
-        // weight: [],
-        // blood: [],
-        // glucose: [],
-        // createdAt: []
-      }
+      chartData: {}
     };
   }
 
@@ -22,7 +18,6 @@ class UsersShow extends React.Component{
     // axios call here
     axios.get('/api/records')
       .then(res => {
-        // console.log(res);
         //structure data
 
         const weight = [];
@@ -30,15 +25,16 @@ class UsersShow extends React.Component{
         const glucose = [];
         const createdAt = [];
 
+        // need to sort res.data by date
+
         // res.data is an array of objects
         // loop over array to get each object (record)
         res.data.forEach(record => {
-          // console.log(record);
           // for each record take out the variables and put them in an array
           weight.push(record.weight);
           blood.push(record.blood);
           glucose.push(record.glucose);
-          createdAt.push(record.createdAt);
+          createdAt.push(moment(record.createdAt).format('YYYY-MM-DD'));
         });
 
         console.log('weight', weight, 'blood', blood, 'glucose', glucose, 'created at', createdAt);
@@ -59,22 +55,6 @@ class UsersShow extends React.Component{
         });
 
       });
-
-    // this.setState({
-    //   chartData: {
-    //     labels: ['April', 'May', 'June', 'July', 'August'],
-    //     datasets: [{
-    //       label: 'Weight',
-    //       data: [89, 90, 93, 90, 91]
-    //     }, {
-    //       label: 'Blood',
-    //       data: [60, 63, 63, 60, 62]
-    //     },{
-    //       label: 'Glucose',
-    //       data: [75, 75, 76, 77, 78]
-    //     }]
-    //   }
-    // });
   }
 
   componentWillMount(){
@@ -96,6 +76,7 @@ class UsersShow extends React.Component{
   }
 
   handleSubmit = (e) => {
+    console.log('this.state', this.state);
     e.preventDefault();
     axios({
       method: 'POST',
