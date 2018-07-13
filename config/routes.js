@@ -8,7 +8,7 @@ const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 
 routes.route('/treatments')
-  .get(treatments.index)
+  .get(secureRoute, treatments.index)
   .post(secureRoute, treatments.create);
 
 routes.route('/treatments/:id')

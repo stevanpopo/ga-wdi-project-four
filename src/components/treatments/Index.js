@@ -3,6 +3,8 @@ import axios from 'axios';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
+import Auth from '../../lib/Auth';
+
 class TreatmentsIndex extends React.Component{
 
   constructor(){
@@ -13,7 +15,11 @@ class TreatmentsIndex extends React.Component{
   }
 
   componentDidMount(){
-    axios.get('/api/treatments')
+    axios({
+      url: '/api/treatments',
+      method: 'GET',
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
       .then(res => {
         this.setState({ treatments: res.data });
       })
@@ -37,6 +43,7 @@ class TreatmentsIndex extends React.Component{
                   <p>{moment(treatment.dateTime).format('YYYY-MM-DD HH:mm:ss')}</p>
                   <p>{treatment.notes}</p>
                   <p>{treatment.completed}</p>
+                  <p>{treatment.owner.username}</p>
                 </div>
               </Link>
             </div>

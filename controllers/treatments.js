@@ -1,7 +1,8 @@
 const Treatment = require('../models/treatment');
 
 function indexRoute(req, res, next){
-  Treatment.find()
+  Treatment.find({ owner: req.currentUser._id })
+    .populate('owner')
     .then(treatments => res.json(treatments))
     .catch(next);
 }
