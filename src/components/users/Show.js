@@ -113,12 +113,12 @@ class UsersShow extends React.Component{
               <input className="input" name="weight" placeholder="Weight" onChange={this.handleChange} />
             </div>
             <div className="field">
-              <label className="label">Glucose</label>
-              <input className="input" name="glucose" placeholder="Glucose" onChange={this.handleChange} />
-            </div>
-            <div className="field">
               <label className="label">Blood</label>
               <input className="input" name="blood" placeholder="Blood" onChange={this.handleChange} />
+            </div>
+            <div className="field">
+              <label className="label">Glucose</label>
+              <input className="input" name="glucose" placeholder="Glucose" onChange={this.handleChange} />
             </div>
 
             <button className="button">Submit Record</button>
@@ -128,12 +128,20 @@ class UsersShow extends React.Component{
         <section>
           <h3 className="title is-3">Medical History</h3>
 
-          <h4 className="title is-4">Weight</h4>
-          <Line data={this.state.chartWeight} />
-          <h4 className="title is-4">Blood</h4>
-          <Line data={this.state.chartBlood} />
-          <h4 className="title is-4">Glucose</h4>
-          <Line data={this.state.chartGlucose} />
+          <div className="columns">
+            <div className="column">
+              <h4 className="title is-4">Weight</h4>
+              <Line data={this.state.chartWeight} />
+            </div>
+            <div className="column">
+              <h4 className="title is-4">Blood</h4>
+              <Line data={this.state.chartBlood} />
+            </div>
+            <div className="column">
+              <h4 className="title is-4">Glucose</h4>
+              <Line data={this.state.chartGlucose} />
+            </div>
+          </div>
         </section>
       </section>
     );
