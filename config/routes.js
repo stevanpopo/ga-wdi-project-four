@@ -17,10 +17,12 @@ routes.route('/treatments/:id')
   .delete(secureRoute, treatments.delete);
 
 routes.route('/records')
-  .post(records.create);
+  .post(records.create)
+  .get(records.index);
 
 routes.route('/records/:id')
-  .put(records.update);
+  .put(records.update)
+  .get(records.show);
 
 routes.route('/register')
   .put(auth.register);
