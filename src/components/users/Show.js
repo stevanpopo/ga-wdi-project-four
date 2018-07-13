@@ -10,7 +10,9 @@ class UsersShow extends React.Component{
   constructor(){
     super();
     this.state = {
-      chartData: {},
+      chartWeight: {},
+      chartBlood: {},
+      chartGlucose: {},
       formData: {}
     };
   }
@@ -39,17 +41,24 @@ class UsersShow extends React.Component{
           createdAt.push(moment(record.createdAt).format('YYYY-MM-DD'));
         });
 
-        console.log('weight', weight, 'blood', blood, 'glucose', glucose, 'created at', createdAt);
         this.setState({
-          chartData: {
+          chartWeight: {
             labels: createdAt,
             datasets: [{
               label: 'Weight',
               data: weight
-            }, {
+            }]
+          },
+          chartBlood: {
+            labels: createdAt,
+            datasets: [{
               label: 'Blood',
               data: blood
-            },{
+            }]
+          },
+          chartGlucose: {
+            labels: createdAt,
+            datasets: [{
               label: 'Glucose',
               data: glucose
             }]
@@ -63,21 +72,17 @@ class UsersShow extends React.Component{
     axios.get(`/api/users/${this.props.match.params.id}`)
       .then(res => {
         this.setState({user: res.data});
-        console.log('get chart data');
         this.getChartData();
       })
       .catch(err => console.log('err', err));
   }
 
   handleChange = ({ target: { name, value }}) => {
-    // this.setState({ [name]: value });
     const formData = { ...this.state.formData, [name]: value };
     this.setState({ formData });
   }
 
   handleSubmit = (e) => {
-    console.log('this.state', this.state);
-    console.log('this.state.formData', this.state.formData);
     e.preventDefault();
     axios({
       method: 'POST',
@@ -85,6 +90,7 @@ class UsersShow extends React.Component{
       data: this.state.formData
     })
       .then(() => {
+        this.getChartData();
         this.props.history.push(`/users/${this.props.match.params.id}`);
       })
       .catch(err => console.log('err', err));
@@ -121,7 +127,13 @@ class UsersShow extends React.Component{
 
         <section>
           <h3 className="title is-3">Medical History</h3>
-          <Line data={this.state.chartData} />
+
+          <h4 className="title is-4">Weight</h4>
+          <Line data={this.state.chartWeight} />
+          <h4 className="title is-4">Blood</h4>
+          <Line data={this.state.chartBlood} />
+          <h4 className="title is-4">Glucose</h4>
+          <Line data={this.state.chartGlucose} />
         </section>
       </section>
     );
