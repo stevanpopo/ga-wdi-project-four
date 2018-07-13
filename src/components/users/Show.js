@@ -11,7 +11,10 @@ class UsersShow extends React.Component{
 
   componentDidMount(){
     axios.get(`/api/users/${this.props.match.params.id}`)
-      .then(res => this.setState({user: res.data}))
+      .then(res => {
+        this.setState({user: res.data});
+        // setState for owner?
+      })
       .catch(err => console.log('err', err));
   }
 
@@ -45,7 +48,7 @@ class UsersShow extends React.Component{
         <section>
           <h3 className="title is-3">Add Medical Record</h3>
           <form onSubmit={this.handleSubmit}>
-            <input className="input" type="hidden" name="owner" placeholder="Owner" value={this.state.user._id} />
+            <input className="input" type="hidden" name="user" value={this.state.user} />
             <div className="field">
               <label className="label">Weight</label>
               <input className="input" name="weight" placeholder="Weight" onChange={this.handleChange} />
