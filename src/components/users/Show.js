@@ -1,12 +1,39 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Line } from 'react-chartjs-2';
 
 class UsersShow extends React.Component{
 
   constructor(){
     super();
-    this.state = {};
+    this.state = {
+      chartData: {}
+    };
+  }
+
+  getChartData(){
+    // axios call here
+    this.setState({
+      chartData: {
+        labels: ['April', 'May', 'June'],
+        datasets: [{
+          label: 'Weight',
+          data: [89, 90, 93, 90, 91]
+        }, {
+          label: 'Blood',
+          data: [60, 63, 63, 60, 62]
+        },{
+          label: 'Glucose',
+          data: [75, 75, 76, 77, 78]
+        }]
+      }
+    });
+  }
+
+  componentWillMount(){
+    console.log('get chart data');
+    this.getChartData();
   }
 
   componentDidMount(){
@@ -31,13 +58,11 @@ class UsersShow extends React.Component{
     })
       .then(() => {
         this.props.history.push(`/users/${this.props.match.params.id}`);
-        console.log('submitted form');
       })
       .catch(err => console.log('err', err));
   }
 
   render(){
-    console.log('this.state', this.state);
     if(!this.state.user) return <h2 className="title is-2">Loading...</h2>;
     return(
       <section>
@@ -64,6 +89,11 @@ class UsersShow extends React.Component{
 
             <button className="button">Submit Record</button>
           </form>
+        </section>
+
+        <section>
+          <h3 className="title is-3">Medical History</h3>
+          <Line data={this.state.chartData} />
         </section>
       </section>
     );
