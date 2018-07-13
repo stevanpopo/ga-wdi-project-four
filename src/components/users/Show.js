@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import moment from 'moment';
+import _ from 'lodash';
 
 class UsersShow extends React.Component{
 
@@ -19,17 +20,17 @@ class UsersShow extends React.Component{
     axios.get('/api/records')
       .then(res => {
         //structure data
-
         const weight = [];
         const blood = [];
         const glucose = [];
         const createdAt = [];
 
         // need to sort res.data by date
+        const sortedRecords = _.sortBy(res.data, ['createdAt']);
 
         // res.data is an array of objects
         // loop over array to get each object (record)
-        res.data.forEach(record => {
+        sortedRecords.forEach(record => {
           // for each record take out the variables and put them in an array
           weight.push(record.weight);
           blood.push(record.blood);
