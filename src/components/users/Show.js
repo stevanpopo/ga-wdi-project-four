@@ -10,7 +10,8 @@ class UsersShow extends React.Component{
   constructor(){
     super();
     this.state = {
-      chartData: {}
+      chartData: {},
+      formData: {}
     };
   }
 
@@ -58,31 +59,30 @@ class UsersShow extends React.Component{
       });
   }
 
-  componentWillMount(){
-    console.log('get chart data');
-    this.getChartData();
-  }
-
   componentDidMount(){
     axios.get(`/api/users/${this.props.match.params.id}`)
       .then(res => {
         this.setState({user: res.data});
-        // setState for owner?
+        console.log('get chart data');
+        this.getChartData();
       })
       .catch(err => console.log('err', err));
   }
 
   handleChange = ({ target: { name, value }}) => {
-    this.setState({ [name]: value });
+    // this.setState({ [name]: value });
+    const formData = { ...this.state.formData, [name]: value };
+    this.setState({ formData });
   }
 
   handleSubmit = (e) => {
     console.log('this.state', this.state);
+    console.log('this.state.formData', this.state.formData);
     e.preventDefault();
     axios({
       method: 'POST',
       url: '/api/records',
-      data: this.state
+      data: this.state.formData
     })
       .then(() => {
         this.props.history.push(`/users/${this.props.match.params.id}`);
