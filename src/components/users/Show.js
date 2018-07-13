@@ -8,27 +8,73 @@ class UsersShow extends React.Component{
   constructor(){
     super();
     this.state = {
-      chartData: {}
+      chartData: {
+        // weight: [],
+        // blood: [],
+        // glucose: [],
+        // createdAt: []
+      }
     };
   }
 
   getChartData(){
+
     // axios call here
-    this.setState({
-      chartData: {
-        labels: ['April', 'May', 'June'],
-        datasets: [{
-          label: 'Weight',
-          data: [89, 90, 93, 90, 91]
-        }, {
-          label: 'Blood',
-          data: [60, 63, 63, 60, 62]
-        },{
-          label: 'Glucose',
-          data: [75, 75, 76, 77, 78]
-        }]
-      }
-    });
+    axios.get('/api/records')
+      .then(res => {
+        // console.log(res);
+        //structure data
+
+        const weight = [];
+        const blood = [];
+        const glucose = [];
+        const createdAt = [];
+
+        // res.data is an array of objects
+        // loop over array to get each object (record)
+        res.data.forEach(record => {
+          // console.log(record);
+          // for each record take out the variables and put them in an array
+          weight.push(record.weight);
+          blood.push(record.blood);
+          glucose.push(record.glucose);
+          createdAt.push(record.createdAt);
+        });
+
+        console.log('weight', weight, 'blood', blood, 'glucose', glucose, 'created at', createdAt);
+        this.setState({
+          chartData: {
+            labels: createdAt,
+            datasets: [{
+              label: 'Weight',
+              data: weight
+            }, {
+              label: 'Blood',
+              data: blood
+            },{
+              label: 'Glucose',
+              data: glucose
+            }]
+          }
+        });
+
+      });
+
+    // this.setState({
+    //   chartData: {
+    //     labels: ['April', 'May', 'June', 'July', 'August'],
+    //     datasets: [{
+    //       label: 'Weight',
+    //       data: [89, 90, 93, 90, 91]
+    //     }, {
+    //       label: 'Blood',
+    //       data: [60, 63, 63, 60, 62]
+    //     },{
+    //       label: 'Glucose',
+    //       data: [75, 75, 76, 77, 78]
+    //     }]
+    //   }
+    // });
   }
 
   componentWillMount(){
