@@ -26,6 +26,16 @@ class TreatmentsIndex extends React.Component{
       .catch(err => console.log('err', err));
   }
 
+  toggleTreatment(treatment){
+    const index = this.state.treatments.indexOf(treatment);
+    console.log(index);
+    const treatments = this.state.treatments.map((treatment, i) => {
+      if(i === index) treatment.completed = !treatment.completed;
+      return treatment;
+    });
+    this.setState({ treatments}, () => console.log(this.state.treatments));
+  }
+
   render(){
     if(this.state.error) return <h2 className="title is-2">{this.state.error}</h2>;
     if(!this.state.treatments) return <h2 className="title is-2">Loading...</h2>;
@@ -37,15 +47,15 @@ class TreatmentsIndex extends React.Component{
 
 
             <div key={treatment._id} className="column is-three-quarters">
-              <Link to={`/treatments/${treatment._id}`}>
-                <div>
+              <div>
+                <Link to={`/treatments/${treatment._id}`}>
                   <h2 className="title is-2">{treatment.title}</h2>
-                  <p>{moment(treatment.dateTime).format('YYYY-MM-DD HH:mm:ss')}</p>
-                  <p>{treatment.notes}</p>
-                  <p>{treatment.completed}</p>
-                  <p>{treatment.owner.username}</p>
-                </div>
-              </Link>
+                </Link>
+                <p>{moment(treatment.dateTime).format('YYYY-MM-DD HH:mm:ss')}</p>
+                <p>{treatment.notes}</p>
+                <p>{treatment.owner.username}</p>
+                <button className="button" onClick={() => this.toggleTreatment(treatment)}>Treatment complete? {treatment.completed.toString()}</button>
+              </div>
             </div>
 
           )}
