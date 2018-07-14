@@ -1,3 +1,8 @@
+@import "helper/_variables.scss";
+
+// import partials
+@import "partials/_typography.scss";
+
 .navbar {
   border-bottom: 2px solid blue;
 }
