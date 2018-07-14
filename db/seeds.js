@@ -104,6 +104,24 @@ mongoose.connect(dbURI, (err, db) => {
         blood: 146,
         glucose: 8.4,
         createdAt: new Date('July 12, 2018 06:00:00')
+      },{
+        user: users[1],
+        weight: 98,
+        blood: 146,
+        glucose: 7.9,
+        createdAt: new Date('July 10, 2018 06:00:00')
+      },{
+        user: users[1],
+        weight: 104,
+        blood: 148,
+        glucose: 8.6,
+        createdAt: new Date('July 12, 2018 06:00:00')
+      },{
+        user: users[1],
+        weight: 100,
+        blood: 149,
+        glucose: 8.3,
+        createdAt: new Date('July 14, 2018 06:00:00')
       }]);
 
     })

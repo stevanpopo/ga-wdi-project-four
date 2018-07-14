@@ -28,12 +28,11 @@ class TreatmentsIndex extends React.Component{
 
   toggleTreatment(treatment){
     const index = this.state.treatments.indexOf(treatment);
-    console.log(index);
     const treatments = this.state.treatments.map((treatment, i) => {
       if(i === index) treatment.completed = !treatment.completed;
       return treatment;
     });
-    this.setState({ treatments}, () => console.log(this.state.treatments));
+    this.setState({ treatments});
   }
 
   render(){
