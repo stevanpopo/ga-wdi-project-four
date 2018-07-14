@@ -67,6 +67,16 @@ describe('GET /treatment/:id', () => {
       });
   });
 
-  
+  it('should return the correct data', done => {
+    api.get(`/api/treatments/${treatment._id}`)
+      .end((err, res) => {
+        expect(res.body.title).to.eq(treatmentData.title);
+        expect(res.body.notes).to.eq(treatmentData.notes);
+        expect(res.body.completed).to.eq(treatmentData.completed);
+        expect(res.body.image).to.eq(treatmentData.image);
+        expect(treatmentData.owner._id.equals(treatment.owner._id)).to.be.true;
+        done();
+      });
+  });
 
 });
