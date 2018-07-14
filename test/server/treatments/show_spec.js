@@ -30,7 +30,7 @@ describe('GET /treatment/:id', () => {
         treatmentData.owner = user;
         return Treatment.create(treatmentData);
       })
-      .then(res => treatment = res, () => console.log('treatment log', treatment))
+      .then(res => treatment = res)
       .then(() => done());
   });
 
@@ -50,5 +50,23 @@ describe('GET /treatment/:id', () => {
         done();
       });
   });
+
+  it('should return a treatment object', done => {
+    api.get(`/api/treatments/${treatment._id}`)
+      .end((err, res) => {
+        expect(res.body).to.include.keys([
+          '_id',
+          'title',
+          'dateTime',
+          'image',
+          'notes',
+          'owner',
+          'completed'
+        ]);
+        done();
+      });
+  });
+
+  
 
 });
