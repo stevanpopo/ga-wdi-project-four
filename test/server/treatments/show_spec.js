@@ -43,4 +43,12 @@ describe('GET /treatment/:id', () => {
       });
   });
 
+  it('should return an object', done => {
+    api.get(`/api/treatments/${treatment._id}`)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
 });
