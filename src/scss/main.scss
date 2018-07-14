@@ -4,5 +4,9 @@
 @import "partials/_typography.scss";
 
 .navbar {
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid $colour-one;
+}
+
+.button {
+  background-color: $colour-one;
 }

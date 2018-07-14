@@ -5,8 +5,16 @@ p, li, a, button {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-two;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 1.8em;
+}
+
+button, .button {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: .6em;
 }
