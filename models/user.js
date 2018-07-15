@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: 'Email is a required field.' },
   password: { type: String, required: 'Password is a required field.' },
   image: { type: String },
-  lovedOnes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  lovedOnes: [ { type: String } ],
   telephone: { type: Number },
   patient: { type: Boolean, default: false }
 }, {

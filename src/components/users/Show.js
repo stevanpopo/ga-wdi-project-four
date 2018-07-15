@@ -120,6 +120,12 @@ class UsersShow extends React.Component{
       <section>
         <h1>{this.state.user.username}</h1>
         <h1>{this.state.user.email}</h1>
+        <p>{this.state.user.telephone}</p>
+        <ul>
+          {this.state.user.lovedOnes.map(person =>
+            <li key="person">{person}</li>
+          )}
+        </ul>
         <Link to={`/users/${this.state.user._id}/edit`} className="button">Edit</Link>
 
         {this.state.user.patient && <section>
