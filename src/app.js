@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
 import Navbar from './components/common/Navbar';
+import Footer from './components/common/Footer';
 import FlashMessages from './components/common/FlashMessages';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import TreatmentsIndex from './components/treatments/Index';
@@ -40,6 +41,7 @@ class App extends React.Component {
               </Switch>
             </div>
           </section>
+          <Footer />
         </main>
       </BrowserRouter>
 
