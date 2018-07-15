@@ -18,6 +18,14 @@ h2:hover {
   color: $colour-one-highlight;
 }
 
+h1.logo-header, span.logo {
+  font-size: 1em;
+  text-transform: uppercase;
+  color: $colour-one;
+  font-family: $font-two;
+  font-weight: bold;
+}
+
 h1 {
   font-size: 2em;
 }

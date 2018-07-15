@@ -23,7 +23,7 @@ class Navbar extends React.Component{
         <div className="navbar-brand">
           <Link to='/' className="navbar-item">
             {/* <img src="#" alt="Logo" width="112" height="28" /> */}
-            <h1>YourCare</h1>
+            <h1 className="logo-header">YourCare</h1>
           </Link>
 
           <a role="button"
