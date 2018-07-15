@@ -13,13 +13,26 @@ mongoose.connect(dbURI, (err, db) => {
     email: 's@s.s',
     password: 's',
     passwordConfirmation: 's',
-    image: 'https://pbs.twimg.com/profile_images/826712998429458432/EOXWrevI.jpg'
+    image: 'https://pbs.twimg.com/profile_images/826712998429458432/EOXWrevI.jpg',
+    patient: true,
+    telephone: 7530486805
   },{
     username: 'Dave',
     email: 'd@d.d',
     password: 'd',
     passwordConfirmation: 'd',
-    image: 'https://res.cloudinary.com/jpress/image/fetch/c_fill,f_auto,h_584,q_auto:eco,w_920/https://inews.co.uk/wp-content/uploads/2018/05/Dave-rapper.jpg'
+    image: 'https://res.cloudinary.com/jpress/image/fetch/c_fill,f_auto,h_584,q_auto:eco,w_920/https://inews.co.uk/wp-content/uploads/2018/05/Dave-rapper.jpg',
+    patient: true,
+    telephone: 7530486805
+  },
+  {
+    username: 'Ana',
+    email: 'a@a.a',
+    password: 'a',
+    passwordConfirmation: 'a',
+    image: 'https://res.cloudinary.com/jpress/image/fetch/c_fill,f_auto,h_584,q_auto:eco,w_920/https://inews.co.uk/wp-content/uploads/2018/05/Dave-rapper.jpg',
+    patient: false,
+    telephone: 7530486805
   }])
     .then(users => {
       console.log(`${users.length} users created.`);
