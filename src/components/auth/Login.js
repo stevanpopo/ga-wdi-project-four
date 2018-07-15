@@ -33,19 +33,23 @@ class AuthLogin extends React.Component{
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
-        <div className="field">
-          <label className="label">Email</label>
-          <input className="input" name="email" placeholder="Email" onChange={this.handleChange} />
-          {/* {this.state.errors.email && <small>{this.state.errors.email}</small>} */}
-        </div>
-        <div className="field">
-          <label className="label">Password</label>
-          <input className="input" type="password" name="password" placeholder="Password" onChange={this.handleChange} />
-        </div>
+      <div className="columns is-centered">
+        <div className="column is-half">
+          <form onSubmit={this.handleSubmit}>
+            <div className="field">
+              <label className="label">Email</label>
+              <input className="input" name="email" placeholder="Email" onChange={this.handleChange} />
+              {/* {this.state.errors.email && <small>{this.state.errors.email}</small>} */}
+            </div>
+            <div className="field">
+              <label className="label">Password</label>
+              <input className="input" type="password" name="password" placeholder="Password" onChange={this.handleChange} />
+            </div>
 
-        <button className="button">Login</button>
-      </form>
+            <button className="button">Login</button>
+          </form>
+        </div>
+      </div>
     );
   }
 }
