@@ -122,7 +122,7 @@ class UsersShow extends React.Component{
         <h1>{this.state.user.email}</h1>
         <Link to={`/users/${this.state.user._id}/edit`} className="button">Edit</Link>
 
-        <section>
+        {this.state.user.patient && <section>
           <h3>Add Medical Record</h3>
           <div className="columns">
             <div className="column is-half">
@@ -144,12 +144,10 @@ class UsersShow extends React.Component{
                 <button className="button">Submit Record</button>
               </form>
             </div>
-
           </div>
+        </section>}
 
-        </section>
-
-        <section>
+        {this.state.user.patient && <section>
           <h3>Medical History</h3>
 
           <div className="columns">
@@ -166,7 +164,7 @@ class UsersShow extends React.Component{
               <Line data={this.state.chartGlucose} options={this.state.options} />
             </div>
           </div>
-        </section>
+        </section>}
       </section>
     );
   }
