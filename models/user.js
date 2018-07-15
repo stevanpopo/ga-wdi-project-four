@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: 'Password is a required field.' },
   image: { type: String },
   lovedOnes: [ { type: String } ],
-  telephone: { type: Number },
+  telephone: { type: String },
   patient: { type: Boolean, default: false }
 }, {
   id: false

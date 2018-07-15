@@ -47,6 +47,7 @@
     "bulma": "^0.7.1",
     "chart.js": "^2.7.2",
     "express": "^4.16.3",
+    "google-libphonenumber": "^3.1.10",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
