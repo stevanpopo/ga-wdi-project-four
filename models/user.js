@@ -5,7 +5,10 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: 'Username is a required field.' },
   email: { type: String, required: 'Email is a required field.' },
   password: { type: String, required: 'Password is a required field.' },
-  image: { type: String }
+  image: { type: String },
+  lovedOnes: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  telephone: { type: Number },
+  patient: { type: Boolean, default: false }
 }, {
   id: false
 });

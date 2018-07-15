@@ -118,23 +118,29 @@ class UsersShow extends React.Component{
 
         <section>
           <h3>Add Medical Record</h3>
-          <form onSubmit={this.handleSubmit}>
-            <input className="input" type="hidden" name="user" value={this.state.user} />
-            <div className="field">
-              <label className="label">Weight</label>
-              <input className="input" name="weight" placeholder="Weight" onChange={this.handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Blood</label>
-              <input className="input" name="blood" placeholder="Blood" onChange={this.handleChange} />
-            </div>
-            <div className="field">
-              <label className="label">Glucose</label>
-              <input className="input" name="glucose" placeholder="Glucose" onChange={this.handleChange} />
+          <div className="columns">
+            <div className="column is-half">
+              <form onSubmit={this.handleSubmit}>
+                <input className="input" type="hidden" name="user" value={this.state.user} />
+                <div className="field">
+                  <label className="label">Weight</label>
+                  <input className="input" name="weight" placeholder="Weight" onChange={this.handleChange} />
+                </div>
+                <div className="field">
+                  <label className="label">Blood</label>
+                  <input className="input" name="blood" placeholder="Blood" onChange={this.handleChange} />
+                </div>
+                <div className="field">
+                  <label className="label">Glucose</label>
+                  <input className="input" name="glucose" placeholder="Glucose" onChange={this.handleChange} />
+                </div>
+
+                <button className="button">Submit Record</button>
+              </form>
             </div>
 
-            <button className="button">Submit Record</button>
-          </form>
+          </div>
+
         </section>
 
         <section>
