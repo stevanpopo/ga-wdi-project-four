@@ -55,21 +55,24 @@ class UsersShow extends React.Component{
             labels: createdAt,
             datasets: [{
               label: 'Weight',
-              data: weight
+              data: weight,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)'
             }]
           },
           chartBlood: {
             labels: createdAt,
             datasets: [{
               label: 'Blood',
-              data: blood
+              data: blood,
+              backgroundColor: 'rgba(255, 99, 132, 0.2)'
             }]
           },
           chartGlucose: {
             labels: createdAt,
             datasets: [{
               label: 'Glucose',
-              data: glucose
+              data: glucose,
+              backgroundColor: 'rgba(255, 206, 86, 0.2)'
             }]
           }
         });
