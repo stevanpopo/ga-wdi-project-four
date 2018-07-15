@@ -8,7 +8,8 @@ class TreatmentsNew extends React.Component{
   constructor(){
     super();
     this.state = {
-      errors: {}
+      errors: {},
+      typeOfCare: 'medicine' // form defaults to medicine
     };
   }
 
@@ -28,12 +29,17 @@ class TreatmentsNew extends React.Component{
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
+  toggleForm = (typeOfCare) => {
+    this.setState({ typeOfCare: typeOfCare});
+  }
+
   render(){
     return(
       <TreatmentsForm
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         data={this.state}
+        toggleForm={this.toggleForm}
       />
     );
   }
