@@ -25,7 +25,7 @@ routes.route('/records/:id')
   .get(records.show);
 
 routes.route('/register')
-  .put(auth.register);
+  .post(auth.register);
 
 routes.route('/login')
   .post(auth.login);

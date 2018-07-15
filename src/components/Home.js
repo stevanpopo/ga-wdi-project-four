@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return(
@@ -15,6 +16,7 @@ const Home = () => {
             <li>Record your medical data to monitor your ongoing health</li>
             <li>Allow your loved ones to monitor and be notified of your progress</li>
           </ul>
+          <p>Alternatively, if you are an existing user, login <Link to="/login"> here</Link>.</p>
         </div>
       </div>
     </section>

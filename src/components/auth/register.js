@@ -50,11 +50,11 @@ class AuthRegister extends React.Component{
               <label className="label">Patient</label>
               <div className="control">
                 <label className="radio">
-                  <input type="radio" name="answer" />
+                  <input type="radio" name="answer" onChange={this.handleChange} />
                   Yes
                 </label>
                 <label className="radio">
-                  <input type="radio" name="answer" checked />
+                  <input type="radio" name="answer" checked onChange={this.handleChange} />
                   No
                 </label>
               </div>

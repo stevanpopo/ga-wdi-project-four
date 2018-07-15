@@ -40,7 +40,7 @@ class TreatmentsIndex extends React.Component{
     if(!this.state.treatments) return <h2 className="title is-2">Loading...</h2>;
     return (
       <section className="section">
-        <h1>Your treatment plan</h1>
+        <h4>Your treatment plan</h4>
         <div>
           {this.state.treatments.map(treatment =>
 
