@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
 
 import Auth from '../../lib/Auth';
 
@@ -50,6 +51,7 @@ class TreatmentsIndex extends React.Component{
               </Link>
               <p><strong>{moment(treatment.dateTime).format('YYYY-MM-DD')} | {moment(treatment.dateTime).format('HH:mm:ss')}</strong></p>
               <p>{treatment.notes}</p>
+              <p>{treatment.owner.username}</p>
               <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>
             </article>
 

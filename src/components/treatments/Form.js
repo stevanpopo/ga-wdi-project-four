@@ -42,8 +42,8 @@ const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm }) => {
             </div>
             {data.typeOfCare==='appointment' && <div className="field">
               <label className="label">Location</label>
-              <input className="input" name="notes" placeholder="Notes" onChange={handleChange} value={data.notes || '' } />
-              {data.errors.notes && <small>{data.errors.notes}</small>}
+              <input className="input" name="location" placeholder="Location" onChange={handleChange} value={data.location || '' } />
+              {data.errors.location && <small>{data.errors.location}</small>}
             </div>}
 
             <button className="button">Submit</button>

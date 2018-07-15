@@ -48,7 +48,14 @@ mongoose.connect(dbURI, (err, db) => {
     .then(users => {
       console.log(`${users.length} users created.`);
       Treatment.create([{
-        dateTime: new Date('July 17, 2018 06:00:00'),
+        dateTime: new Date('July 12, 2018 06:00:00'),
+        title: 'Morning pills x 3 - this is the new date',
+        completed: false,
+        owner: users[0],
+        image: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775_960_720.jpg',
+        notes: 'To be taken before eating breakfast.'
+      },{
+        dateTime: new Date('July 14, 2018 06:00:00'),
         title: 'Morning pills x 3',
         completed: false,
         owner: users[0],
@@ -77,6 +84,13 @@ mongoose.connect(dbURI, (err, db) => {
         notes: 'To be taken before eating breakfast.'
       },{
         dateTime: new Date('July 20, 2018 06:00:00'),
+        title: 'Morning pills x 3',
+        completed: false,
+        owner: users[0],
+        image: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775_960_720.jpg',
+        notes: 'To be taken before eating breakfast.'
+      },{
+        dateTime: new Date('July 15, 2018 06:00:00'),
         title: 'Morning pills x 3',
         completed: false,
         owner: users[0],
