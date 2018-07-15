@@ -5,6 +5,8 @@ import { Line } from 'react-chartjs-2';
 import moment from 'moment';
 import _ from 'lodash';
 
+import Auth from '../../lib/Auth';
+
 class UsersShow extends React.Component{
 
   constructor(){
@@ -29,7 +31,11 @@ class UsersShow extends React.Component{
   getChartData(){
 
     // axios call here
-    axios.get('/api/records')
+    axios({
+      method: 'GET',
+      url: '/api/records',
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
       .then(res => {
         //structure data
         const weight = [];

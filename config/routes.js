@@ -18,7 +18,7 @@ routes.route('/treatments/:id')
 
 routes.route('/records')
   .post(records.create)
-  .get(records.index);
+  .get(secureRoute, records.index);
 
 routes.route('/records/:id')
   .put(records.update)

@@ -13,7 +13,7 @@ function showRoute(req, res, next){
 }
 
 function indexRoute(req, res, next){
-  Record.find()
+  Record.find({ user: req.currentUser._id })
     .then(records => res.json(records))
     .catch(next);
 }
