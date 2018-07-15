@@ -10,3 +10,16 @@
 .button {
   background-color: $colour-one;
 }
+
+.treatment-article {
+  margin-bottom: 2em;
+}
+
+span.treatment-completed-button {
+  background-color: $colour-two;
+  color: white;
+  font-weight: bold;
+  padding: .1em .4em;
+  border-radius: 8%;
+  margin-left: 1em;
+}

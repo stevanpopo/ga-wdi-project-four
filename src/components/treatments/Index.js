@@ -40,21 +40,18 @@ class TreatmentsIndex extends React.Component{
     if(!this.state.treatments) return <h2 className="title is-2">Loading...</h2>;
     return (
       <section className="section">
-        <h1>TreatmentsIndex</h1>
-        <div className="columns is-multiline">
+        <h1>Your treatment plan</h1>
+        <div>
           {this.state.treatments.map(treatment =>
 
-
-            <div key={treatment._id} className="column is-three-quarters">
-              <article>
-                <Link to={`/treatments/${treatment._id}`}>
-                  <h2>{treatment.title}</h2>
-                </Link>
-                <p>{moment(treatment.dateTime).format('YYYY-MM-DD HH:mm:ss')}</p>
-                <p>{treatment.notes}</p>
-                <button className="button" onClick={() => this.toggleTreatment(treatment)}>Treatment complete? {treatment.completed.toString()}</button>
-              </article>
-            </div>
+            <article className="treatment-article" key={treatment._id}>
+              <Link to={`/treatments/${treatment._id}`}>
+                <h2>{treatment.title}</h2>
+              </Link>
+              <p><strong>{moment(treatment.dateTime).format('YYYY-MM-DD')} | {moment(treatment.dateTime).format('HH:mm:ss')}</strong></p>
+              <p>{treatment.notes}</p>
+              <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>
+            </article>
 
           )}
 
