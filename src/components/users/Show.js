@@ -114,7 +114,7 @@ class UsersShow extends React.Component{
         <Link to={`/users/${this.state.user._id}/edit`} className="button">Edit</Link>
 
         <section>
-          <h3 className="title is-3">Add Medical Record</h3>
+          <h3>Add Medical Record</h3>
           <form onSubmit={this.handleSubmit}>
             <input className="input" type="hidden" name="user" value={this.state.user} />
             <div className="field">
@@ -135,19 +135,19 @@ class UsersShow extends React.Component{
         </section>
 
         <section>
-          <h3 className="title is-3">Medical History</h3>
+          <h3>Medical History</h3>
 
           <div className="columns">
             <div className="column">
-              <h4 className="title is-4">Weight</h4>
+              <h4>Weight</h4>
               <Line data={this.state.chartWeight} options={this.state.options}  />
             </div>
             <div className="column">
-              <h4 className="title is-4">Blood</h4>
+              <h4>Blood</h4>
               <Line data={this.state.chartBlood} options={this.state.options} />
             </div>
             <div className="column">
-              <h4 className="title is-4">Glucose</h4>
+              <h4>Glucose</h4>
               <Line data={this.state.chartGlucose} options={this.state.options} />
             </div>
           </div>

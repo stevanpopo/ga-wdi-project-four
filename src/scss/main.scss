@@ -8,7 +8,8 @@
 }
 
 .button {
-  background-color: $colour-one;
+  background-color: $colour-two;
+  margin-bottom: 2em;
 }
 
 .treatment-article {
@@ -19,7 +20,12 @@ span.treatment-completed-button {
   background-color: $colour-two;
   color: white;
   font-weight: bold;
-  padding: .1em .4em;
+  padding: .1em .7em;
   border-radius: 8%;
   margin-left: 1em;
+}
+
+span.treatment-completed-button:hover {
+  background-color: $colour-two-highlight;
+  cursor: pointer;
 }
