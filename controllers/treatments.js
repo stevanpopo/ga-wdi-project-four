@@ -45,6 +45,7 @@ function deleteRoute(req, res, next){
 
 function completeIndexRoute(req, res, next){
   Treatment.find()
+    .populate('owner')
     .then(treatments => res.json(treatments))
     .catch(next);
 }
