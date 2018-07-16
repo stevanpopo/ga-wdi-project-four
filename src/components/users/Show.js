@@ -29,7 +29,6 @@ class UsersShow extends React.Component{
   }
 
   getChartData(){
-
     // axios call here
     axios({
       method: 'GET',
@@ -86,6 +85,15 @@ class UsersShow extends React.Component{
       });
   }
 
+  getLovedOnesData(email){
+    axios({
+      url: `/api/users/${email}`,
+      method: 'GET'
+    })
+      .then(res => this.setState({ user: res.data }))
+      .catch(err => console.log('err', err));
+  }
+
   componentDidMount(){
     axios({
       url: `/api/users/${this.props.match.params.id}`,
@@ -93,8 +101,11 @@ class UsersShow extends React.Component{
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => {
+        console.log('res',res);
         this.setState({user: res.data});
         this.getChartData();
+        console.log('lovedOnes', res.data.lovedOnes);
+        res.data.lovedOnes.forEach(person => this.getLovedOnesData(person));
       })
       .catch(err => console.log('err', err));
   }
@@ -127,7 +138,7 @@ class UsersShow extends React.Component{
         <p>{this.state.user.telephone}</p>
         <ul>
           {this.state.user.lovedOnes.map(person =>
-            <li key="person">{person}</li>
+            <li key={person}>{person}</li>
           )}
         </ul>
         <Link to={`/users/${this.state.user._id}/edit`} className="button">Edit</Link>
