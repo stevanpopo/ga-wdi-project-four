@@ -3,7 +3,10 @@ const User = require('../models/user');
 function showRoute(req, res, next){
   User.findById(req.params.id)
     .then(user => {
-      if(!user.isUser(req.currentUser) || !user.isLovedOne(req.currentUser)) return res.status(401);
+      console.log('dealing with request');
+      console.log('currentUser', req.currentUser);
+      if(!user.isUser(req.currentUser) && !user.isLovedOne(req.currentUser)) return res.status(401);
+      console.log('did I make it here?');
       res.json(user);
     })
     .catch(next);

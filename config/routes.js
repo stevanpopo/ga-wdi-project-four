@@ -31,7 +31,7 @@ routes.route('/login')
   .post(auth.login);
 
 routes.route('/users/:id')
-  .get(users.show)
+  .get(secureRoute, users.show)
   .put(users.update);
 
 module.exports = routes;

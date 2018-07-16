@@ -54,10 +54,14 @@ userSchema.methods.validatePassword = function validatePassword(password) {
 };
 
 userSchema.methods.isLovedOne = function(user) {
+  console.log('isLovedOne used');
+  console.log('email check', user.lovedOnes, this.email );
   return user.lovedOnes.includes(this.email);
 };
 
 userSchema.methods.isUser = function(user){
+  console.log('isUser one used');
+  console.log('ID check', this._id, user._id);
   return this._id.equals(user._id);
 };
 
