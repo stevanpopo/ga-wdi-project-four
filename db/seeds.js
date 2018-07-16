@@ -62,6 +62,13 @@ mongoose.connect(dbURI, (err, db) => {
         image: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775_960_720.jpg',
         notes: 'To be taken before eating breakfast.'
       },{
+        dateTime: new Date('July 16, 2018 10:00:00'),
+        title: 'Kidney care @ Edgware Hospital',
+        completed: false,
+        owner: users[0],
+        image: 'https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1986133/580/386/m1/fpnw/wm0/calendar-flat-line-icon-01-.jpg',
+        notes: 'Will do blood test and dialysis treatment.'
+      },{
         dateTime: new Date('July 17, 2018 18:00:00'),
         title: 'Kidney care @ Edgware Hospital',
         completed: false,
