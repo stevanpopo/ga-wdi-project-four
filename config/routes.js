@@ -16,6 +16,9 @@ routes.route('/treatments/:id')
   .put(secureRoute, treatments.update)
   .delete(secureRoute, treatments.delete);
 
+routes.route('/alltreatments')
+  .get(treatments.completeIndex);
+
 routes.route('/records')
   .post(records.create)
   .get(secureRoute, records.index);
