@@ -62,7 +62,7 @@ mongoose.connect(dbURI, (err, db) => {
         image: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775_960_720.jpg',
         notes: 'To be taken before eating breakfast.'
       },{
-        dateTime: new Date('July 16, 2018 10:00:00'),
+        dateTime: new Date('July 16, 2018 20:00:00'),
         title: 'Kidney care @ Edgware Hospital',
         completed: false,
         owner: users[0],

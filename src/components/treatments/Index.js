@@ -9,9 +9,7 @@ class TreatmentsIndex extends React.Component{
 
   constructor(){
     super();
-    this.state = {
-      // treatments: []
-    };
+    this.state = {};
   }
 
   componentDidMount(){
@@ -37,15 +35,11 @@ class TreatmentsIndex extends React.Component{
           headers: { Authorization: `Bearer ${Auth.getToken()}`},
           data: treatment
         })
-          .then(res => console.log(res))
           .catch(err => console.log(err));
       }
       return treatment;
     });
     this.setState({ treatments}, console.log(this.state));
-
-
-
   }
 
   render(){
@@ -57,16 +51,31 @@ class TreatmentsIndex extends React.Component{
         <div>
           {this.state.treatments.map(treatment =>
 
-            <article className="treatment-article" key={treatment._id}>
-              <Link to={`/treatments/${treatment._id}`}>
-                <h2>{treatment.title}</h2>
-              </Link>
-              <p><strong>{moment(treatment.dateTime).format('YYYY-MM-DD')} | {moment(treatment.dateTime).format('HH:mm:ss')}</strong></p>
-              <p>{treatment.notes}</p>
-              <p>{treatment.owner.username}</p>
-              <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>
 
-            </article>
+
+            <div key={treatment._id}>
+              {moment(treatment.dateTime).format('YYYY-MM-DD').toString() === moment(Date.now()).format('YYYY-MM-DD').toString() && <h5>Today</h5>}
+
+              {moment(treatment.dateTime).format('YYYY-MM-DD').toString() === moment(Date.now()).add(1, 'days').format('YYYY-MM-DD').toString() && <h5>Tomorrow</h5>}
+
+              {moment(treatment.dateTime).format('YYYY-MM-DD').toString() >=
+              moment(Date.now()).add(2, 'days').format('YYYY-MM-DD').toString()
+              && moment(treatment.dateTime).format('YYYY-MM-DD').toString()
+              <= moment(Date.now()).add(2, 'days').format('YYYY-MM-DD').toString()
+              && <h5>Later in the week</h5>}
+
+              <article className="treatment-article" >
+
+                <Link to={`/treatments/${treatment._id}`}>
+                  <h2>{treatment.title}</h2>
+                </Link>
+                <p><strong>{moment(treatment.dateTime).format('YYYY-MM-DD')} | {moment(treatment.dateTime).format('HH:mm:ss')}</strong></p>
+                <p>{treatment.notes}</p>
+                <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>
+
+              </article>
+            </div>
+
 
           )}
 

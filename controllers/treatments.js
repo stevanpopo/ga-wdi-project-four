@@ -3,7 +3,7 @@ const _ = require('lodash');
 // const twilio = require('../lib/twilio');
 
 function indexRoute(req, res, next){
-  Treatment.find({ owner: req.currentUser._id}) // filter out past dates on not users, dateTime: { $gte: Date.now()}
+  Treatment.find({ owner: req.currentUser._id, dateTime: { $gte: Date.now()}}) // filter out past dates on not users
     .populate('owner')
     .then(treatments => {
       treatments = _.sortBy(treatments, ['dateTime']); // send in date order
@@ -51,7 +51,6 @@ function completeIndexRoute(req, res, next){
 }
 
 function updateIndexRoute(req, res, next){
-  console.log(req.body);
   Treatment.findById(req.body._id)
     .then(treatment => treatment.set(req.body))
     .then(treatment => treatment.save())
