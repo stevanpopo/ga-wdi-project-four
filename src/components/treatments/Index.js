@@ -31,15 +31,15 @@ class TreatmentsIndex extends React.Component{
     const treatments = this.state.treatments.map((treatment, i) => {
       if(i === index) {
         treatment.completed = !treatment.completed;
-        // make axios put
-        // axios({
-        //   method: 'PUT',
-        //   url: '/api/treatments',
-        //   headers: { Authorization: `Bearer ${Auth.getToken()}`},
-        //   data: treatment
-        // })
-        //   .then()
-      };
+        axios({
+          method: 'PUT',
+          url: '/api/treatments',
+          headers: { Authorization: `Bearer ${Auth.getToken()}`},
+          data: treatment
+        })
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
+      }
       return treatment;
     });
     this.setState({ treatments}, console.log(this.state));

@@ -51,7 +51,8 @@ function completeIndexRoute(req, res, next){
 }
 
 function updateIndexRoute(req, res, next){
-  Treatment.findById(req.body.id)
+  console.log(req.body);
+  Treatment.findById(req.body._id)
     .then(treatment => treatment.set(req.body))
     .then(treatment => treatment.save())
     .then(treatment => res.json(treatment))
