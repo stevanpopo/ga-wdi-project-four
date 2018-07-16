@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Auth from '../../lib/Auth';
+import moment from 'moment';
 
 import TreatmentsForm from './Form';
 
@@ -10,7 +11,8 @@ class TreatmentsNew extends React.Component{
     this.state = {
       errors: {},
       typeOfCare: 'medicine', // form defaults to medicine
-      owner: Auth.getPayload().currentUser // set the owner to be logged in user
+      owner: Auth.getPayload().currentUser, // set the owner to be logged in user
+      startDate: moment(Date.now())
     };
   }
 
