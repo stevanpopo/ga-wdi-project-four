@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import _ from 'lodash';
 
 import Auth from '../../lib/Auth';
 
@@ -30,10 +29,23 @@ class TreatmentsIndex extends React.Component{
   toggleTreatment(treatment){
     const index = this.state.treatments.indexOf(treatment);
     const treatments = this.state.treatments.map((treatment, i) => {
-      if(i === index) treatment.completed = !treatment.completed;
+      if(i === index) {
+        treatment.completed = !treatment.completed;
+        // make axios put
+        // axios({
+        //   method: 'PUT',
+        //   url: '/api/treatments',
+        //   headers: { Authorization: `Bearer ${Auth.getToken()}`},
+        //   data: treatment
+        // })
+        //   .then()
+      };
       return treatment;
     });
-    this.setState({ treatments});
+    this.setState({ treatments}, console.log(this.state));
+
+
+
   }
 
   render(){
@@ -53,6 +65,7 @@ class TreatmentsIndex extends React.Component{
               <p>{treatment.notes}</p>
               <p>{treatment.owner.username}</p>
               <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>
+
             </article>
 
           )}

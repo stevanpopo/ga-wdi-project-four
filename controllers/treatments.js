@@ -50,11 +50,20 @@ function completeIndexRoute(req, res, next){
     .catch(next);
 }
 
+function updateIndexRoute(req, res, next){
+  Treatment.findById(req.body.id)
+    .then(treatment => treatment.set(req.body))
+    .then(treatment => treatment.save())
+    .then(treatment => res.json(treatment))
+    .catch(next);
+}
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
   create: createRoute,
   update: updateRoute,
   delete: deleteRoute,
-  completeIndex: completeIndexRoute
+  completeIndex: completeIndexRoute,
+  updateIndex: updateIndexRoute
 };

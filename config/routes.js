@@ -9,7 +9,8 @@ const secureRoute = require('../lib/secureRoute');
 
 routes.route('/treatments')
   .get(secureRoute, treatments.index)
-  .post(secureRoute, treatments.create);
+  .post(secureRoute, treatments.create)
+  .put(secureRoute, treatments.updateIndex);
 
 routes.route('/treatments/:id')
   .get(treatments.show)
