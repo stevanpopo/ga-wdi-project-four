@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import moment from 'moment';
 import _ from 'lodash';
@@ -24,7 +24,8 @@ class UsersShow extends React.Component{
       //     }]
       //   }
       // },
-      formData: {}
+      formData: {},
+      populatedLovedOnes: []
     };
   }
 
@@ -80,7 +81,7 @@ class UsersShow extends React.Component{
               backgroundColor: 'rgba(255, 206, 86, 0.2)'
             }]
           }
-        }, () => console.log('get chart data'));
+        });
 
       });
   }
@@ -91,9 +92,10 @@ class UsersShow extends React.Component{
       method: 'GET'
     })
       .then(res => {
-        console.log('lovedOnes', lovedOnes);
-        lovedOnes[index] = res.data;
-        if(index === lovedOnes.length-1) this.setState({ ...this.state, user: { ...this.state.user, lovedOnes: lovedOnes }});
+        // console.log('lovedOnes', lovedOnes);
+        const populatedLovedOnes = [...this.state.populatedLovedOnes, res.data];
+        // if(index === lovedOnes.length-1) this.setState({ ...this.state, user: { ...this.state.user, lovedOnes: lovedOnes }});
+        this.setState({ populatedLovedOnes });
       })
       .catch(err => console.log('err', err));
   }
@@ -106,7 +108,7 @@ class UsersShow extends React.Component{
     })
       .then(res => {
         // console.log('res',res);
-        this.setState({user: res.data}, () => console.log('componentDidMount'));
+        this.setState({user: res.data});
         this.getChartData();
         // console.log('lovedOnes', res.data.lovedOnes);
         res.data.lovedOnes.forEach((person, index) => {
@@ -115,6 +117,35 @@ class UsersShow extends React.Component{
       })
       .catch(err => console.log('err', err));
   }
+
+  componentWillReceiveProps = (nextProps) => {
+    const currentId = this.state.user._id;
+    const nextId = nextProps.match.params.id;
+    console.log(currentId, nextId);
+    if (currentId && currentId !== nextId) {
+
+      axios({
+        url: `/api/users/${nextProps.match.params.id}`,
+        method: 'GET',
+        headers: { Authorization: `Bearer ${Auth.getToken()}`}
+      })
+        .then(res => {
+          // console.log('res',res);
+          const populatedLovedOnes = [];
+          this.setState({user: res.data, populatedLovedOnes});
+          this.getChartData();
+          // console.log('lovedOnes', res.data.lovedOnes);
+          res.data.lovedOnes.forEach((person, index) => {
+            this.getLovedOnesData(person, index, res.data.lovedOnes);
+          });
+        })
+        .catch(err => console.log('err', err));
+
+
+    }
+  }
+
+
 
   handleChange = ({ target: { name, value }}) => {
     const formData = { ...this.state.formData, [name]: value };
@@ -136,7 +167,7 @@ class UsersShow extends React.Component{
   }
 
   render(){
-    console.log('this.state', this.state);
+    // console.log('this.state', this.state);
     if(!this.state.user) return <h2 className="title is-2">Loading...</h2>;
     return(
       <section>
@@ -144,8 +175,10 @@ class UsersShow extends React.Component{
         <h1>{this.state.user.email}</h1>
         <p>{this.state.user.telephone}</p>
         <ul>
-          {this.state.user.lovedOnes.map(person =>
-            <li key={person._username}><Link to={`/users/${person._id}`}>{person.username}</Link></li>
+          {this.state.populatedLovedOnes.map((person) =>
+            <li key={person._id}>
+              <Link  to={`/users/${person._id}`}>{person.username} | {person._id}</Link>
+            </li>
           )}
         </ul>
         <Link to={`/users/${this.state.user._id}/edit`} className="button">Edit</Link>
