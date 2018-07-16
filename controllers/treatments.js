@@ -1,8 +1,9 @@
 const Treatment = require('../models/treatment');
 const _ = require('lodash');
+const twilio = require('../lib/twilio');
 
 function indexRoute(req, res, next){
-  Treatment.find({ owner: req.currentUser._id, dateTime: { $gte: Date.now()}}) // filter out past dates on not users
+  Treatment.find({ owner: req.currentUser._id}) // filter out past dates on not users, dateTime: { $gte: Date.now()}
     .populate('owner')
     .then(treatments => {
       treatments = _.sortBy(treatments, ['dateTime']); // send in date order
@@ -19,7 +20,11 @@ function showRoute(req, res, next){
 
 function createRoute(req, res, next){
   Treatment.create(req.body)
-    .then(treatment => res.status(201).json(treatment))
+    // .then(treatment => Treatment.populate(treatment, { path: 'owner'}))
+    .then(treatment => {
+      // twilio.sendSMS('new appointment scheduled', treatment.owner.telephone);
+      res.status(201).json(treatment);
+    })
     .catch(next);
 }
 

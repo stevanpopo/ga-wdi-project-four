@@ -9,7 +9,8 @@ class TreatmentsNew extends React.Component{
     super();
     this.state = {
       errors: {},
-      typeOfCare: 'medicine' // form defaults to medicine
+      typeOfCare: 'medicine', // form defaults to medicine
+      owner: Auth.getPayload().currentUser // set the owner to be logged in user
     };
   }
 
@@ -19,6 +20,7 @@ class TreatmentsNew extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     axios({
       method: 'POST',
       url: '/api/treatments',
@@ -26,7 +28,10 @@ class TreatmentsNew extends React.Component{
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(() => this.props.history.push('/treatments'))
-      .catch(err => this.setState({ errors: err.response.data.errors }));
+      .catch(err => {
+        console.log('err', err);
+        this.setState({ errors: err.response.data.errors });
+      });
   }
 
   toggleForm = (typeOfCare) => {

@@ -1,12 +1,13 @@
 import React from 'react';
 
 const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm }) => {
-  console.log('data', data);
+  // console.log('data', data);
   return(
     <section>
       <div className="columns is-centered">
         <div className="column is-half">
           <form onSubmit={handleSubmit}>
+            <input className="input" type="hidden" name="owner" value={data.owner || ''} />
             <div className="field">
               <label className="label">Type of Care</label>
               <div className="control">
