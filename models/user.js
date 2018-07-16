@@ -53,4 +53,12 @@ userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+userSchema.methods.isLovedOne = function(user) {
+  return user.lovedOnes.includes(this.email);
+};
+
+userSchema.methods.isUser = function(user){
+  return this._id.equals(user._id);
+};
+
 module.exports = mongoose.model('User', userSchema);

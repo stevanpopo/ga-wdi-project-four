@@ -1,6 +1,6 @@
 const Treatment = require('../models/treatment');
 const _ = require('lodash');
-const twilio = require('../lib/twilio');
+// const twilio = require('../lib/twilio');
 
 function indexRoute(req, res, next){
   Treatment.find({ owner: req.currentUser._id}) // filter out past dates on not users, dateTime: { $gte: Date.now()}
