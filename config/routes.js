@@ -34,4 +34,7 @@ routes.route('/users/:id')
   .get(secureRoute, users.show)
   .put(users.update);
 
+routes.route('/user/:email')
+  .get(users.getData);
+
 module.exports = routes;

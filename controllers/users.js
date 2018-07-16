@@ -20,7 +20,14 @@ function updateRoute(req, res, next){
     .catch(next);
 }
 
+function getDataRoute(req, res, next){
+  User.findOne({ email: req.params.email })
+    .then(user => res.json(user))
+    .catch(next);
+}
+
 module.exports = {
   show: showRoute,
-  update: updateRoute
+  update: updateRoute,
+  getData: getDataRoute
 };

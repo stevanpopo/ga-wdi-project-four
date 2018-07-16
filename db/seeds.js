@@ -37,7 +37,7 @@ mongoose.connect(dbURI, (err, db) => {
     lovedOnes: ['s@s.s', 'm@m.m']
   },{
     username: 'Marko',
-    email: 'ma.m',
+    email: 'm@m.m',
     password: 'm',
     passwordConfirmation: 'm',
     image: 'https://res.cloudinary.com/jpress/image/fetch/c_fill,f_auto,h_584,q_auto:eco,w_920/https://inews.co.uk/wp-content/uploads/2018/05/Dave-rapper.jpg',

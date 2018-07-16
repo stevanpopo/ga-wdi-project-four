@@ -80,17 +80,21 @@ class UsersShow extends React.Component{
               backgroundColor: 'rgba(255, 206, 86, 0.2)'
             }]
           }
-        });
+        }, () => console.log('get chart data'));
 
       });
   }
 
-  getLovedOnesData(email){
+  getLovedOnesData(email, index, lovedOnes){
     axios({
-      url: `/api/users/${email}`,
+      url: `/api/user/${email}`,
       method: 'GET'
     })
-      .then(res => this.setState({ user: res.data }))
+      .then(res => {
+        console.log('lovedOnes', lovedOnes);
+        lovedOnes[index] = res.data;
+        if(index === lovedOnes.length-1) this.setState({ ...this.state, user: { ...this.state.user, lovedOnes: lovedOnes }});
+      })
       .catch(err => console.log('err', err));
   }
 
@@ -101,11 +105,13 @@ class UsersShow extends React.Component{
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => {
-        console.log('res',res);
-        this.setState({user: res.data});
+        // console.log('res',res);
+        this.setState({user: res.data}, () => console.log('componentDidMount'));
         this.getChartData();
-        console.log('lovedOnes', res.data.lovedOnes);
-        res.data.lovedOnes.forEach(person => this.getLovedOnesData(person));
+        // console.log('lovedOnes', res.data.lovedOnes);
+        res.data.lovedOnes.forEach((person, index) => {
+          this.getLovedOnesData(person, index, res.data.lovedOnes);
+        });
       })
       .catch(err => console.log('err', err));
   }
@@ -130,6 +136,7 @@ class UsersShow extends React.Component{
   }
 
   render(){
+    console.log('this.state', this.state);
     if(!this.state.user) return <h2 className="title is-2">Loading...</h2>;
     return(
       <section>
@@ -138,7 +145,7 @@ class UsersShow extends React.Component{
         <p>{this.state.user.telephone}</p>
         <ul>
           {this.state.user.lovedOnes.map(person =>
-            <li key={person}>{person}</li>
+            <li key={person._username}><Link to={`/users/${person._id}`}>{person.username}</Link></li>
           )}
         </ul>
         <Link to={`/users/${this.state.user._id}/edit`} className="button">Edit</Link>
