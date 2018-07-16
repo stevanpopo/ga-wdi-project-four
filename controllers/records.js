@@ -1,4 +1,5 @@
 const Record = require('../models/record');
+const User = require('../models/user');
 
 function createRoute(req, res, next){
   Record.create(req.body)
@@ -13,7 +14,7 @@ function showRoute(req, res, next){
 }
 
 function indexRoute(req, res, next){
-  Record.find({ user: req.currentUser._id })
+  Record.find({ user: req.headers.recordsowneris})
     .then(records => res.json(records))
     .catch(next);
 }

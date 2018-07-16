@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import moment from 'moment';
 import _ from 'lodash';
@@ -34,7 +34,7 @@ class UsersShow extends React.Component{
     axios({
       method: 'GET',
       url: '/api/records',
-      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+      headers: { Authorization: `Bearer ${Auth.getToken()}`, recordsOwnerIs: this.state.user._id}
     })
       .then(res => {
         //structure data
@@ -86,15 +86,13 @@ class UsersShow extends React.Component{
       });
   }
 
-  getLovedOnesData(email, index, lovedOnes){
+  getLovedOnesData(email){
     axios({
       url: `/api/user/${email}`,
       method: 'GET'
     })
       .then(res => {
-        // console.log('lovedOnes', lovedOnes);
         const populatedLovedOnes = [...this.state.populatedLovedOnes, res.data];
-        // if(index === lovedOnes.length-1) this.setState({ ...this.state, user: { ...this.state.user, lovedOnes: lovedOnes }});
         this.setState({ populatedLovedOnes });
       })
       .catch(err => console.log('err', err));
@@ -107,12 +105,10 @@ class UsersShow extends React.Component{
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => {
-        // console.log('res',res);
         this.setState({user: res.data});
         this.getChartData();
-        // console.log('lovedOnes', res.data.lovedOnes);
-        res.data.lovedOnes.forEach((person, index) => {
-          this.getLovedOnesData(person, index, res.data.lovedOnes);
+        res.data.lovedOnes.forEach((person) => {
+          this.getLovedOnesData(person);
         });
       })
       .catch(err => console.log('err', err));
@@ -130,17 +126,14 @@ class UsersShow extends React.Component{
         headers: { Authorization: `Bearer ${Auth.getToken()}`}
       })
         .then(res => {
-          // console.log('res',res);
           const populatedLovedOnes = [];
           this.setState({user: res.data, populatedLovedOnes});
           this.getChartData();
-          // console.log('lovedOnes', res.data.lovedOnes);
-          res.data.lovedOnes.forEach((person, index) => {
-            this.getLovedOnesData(person, index, res.data.lovedOnes);
+          res.data.lovedOnes.forEach((person) => {
+            this.getLovedOnesData(person);
           });
         })
         .catch(err => console.log('err', err));
-
 
     }
   }
