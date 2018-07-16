@@ -176,7 +176,7 @@ class UsersShow extends React.Component{
         </ul>
         <Link to={`/users/${this.state.user._id}/edit`} className="button">Edit</Link>
 
-        {this.state.user.patient && <section>
+        {this.state.user.patient && this.state.user._id === Auth.getPayload().currentUser._id && <section>
           <h3>Add Medical Record</h3>
           <div className="columns">
             <div className="column is-half">
