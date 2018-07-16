@@ -43,10 +43,17 @@ function deleteRoute(req, res, next){
     .catch(next);
 }
 
+function completeIndexRoute(req, res, next){
+  Treatment.find()
+    .then(treatments => res.json(treatments))
+    .catch(next);
+}
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
   create: createRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  completeIndex: completeIndexRoute
 };
