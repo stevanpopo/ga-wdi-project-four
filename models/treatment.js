@@ -6,6 +6,7 @@ const treatmentSchema = new mongoose.Schema({
   completed: { type: Boolean, default: false },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User' },
   image: { type: String },
+  location: { type: String },
   notes: { type: String, required: 'Notes is a required field.' }
 });
 

@@ -58,6 +58,7 @@ class TreatmentsIndex extends React.Component{
   }
 
   render(){
+    // console.log(this.state);
     if(this.state.error) return <h2 className="title is-2">{this.state.error}</h2>;
     if(!this.state.treatments) return <h2 className="title is-2">Loading...</h2>;
     return (
@@ -78,10 +79,8 @@ class TreatmentsIndex extends React.Component{
                     <h2>{treatment.title}</h2>
                   </Link>
                   <p><strong>{moment(treatment.dateTime).calendar()}</strong></p>
-                  {/* <p><strong>{typeof(treatment.dateTime)}</strong></p>
-                  <p><strong>{moment('2018-07-17T17:00:00.000Z').calendar()}</strong></p>
-                  <p><strong>{moment('2018-07-27T13:00:03.000Z').calendar()}</strong></p> */}
                   <p>{treatment.notes}</p>
+                  <p>{treatment.location}</p>
                   {moment(treatment.dateTime).format('MM-DD-YYYY') === moment(Date.now()).format('MM-DD-YYYY') && <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>}
 
                 </article>

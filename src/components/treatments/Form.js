@@ -49,11 +49,11 @@ const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm, handleDa
               <input className="input" name="notes" placeholder="Notes" onChange={handleChange} value={data.notes || '' } />
               {data.errors.notes && <small>{data.errors.notes}</small>}
             </div>
-            <div className="field">
+            {data.typeOfCare==='medicine' && <div className="field">
               <label className="label">Image</label>
               <input className="input" name="image" placeholder="Image" onChange={handleChange} value={data.image || '' } />
               {data.errors.image && <small>{data.errors.image}</small>}
-            </div>
+            </div>}
             {data.typeOfCare==='appointment' && <div className="field">
               <label className="label">Location</label>
               <input className="input" name="location" placeholder="Location" onChange={handleChange} value={data.location || '' } />
