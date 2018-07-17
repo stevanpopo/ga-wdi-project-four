@@ -173,7 +173,7 @@ class UsersShow extends React.Component{
   }
 
   render(){
-    console.log('this.state', this.state);
+    // console.log('this.state', this.state);
     if(!this.state.user) return <h2 className="title is-2">Loading...</h2>;
     return(
       <section>
@@ -234,6 +234,30 @@ class UsersShow extends React.Component{
               <Line data={this.state.chartGlucose} options={this.state.options} />
             </div>
           </div>
+        </section>}
+
+        {this.state.user.patient && this.state.user._id !== Auth.getPayload().currentUser._id && <section>
+          {this.formatDates(this.state.user.treatments).map(day =>
+
+            <div key={day.date} className="treatment-index">
+
+              <h5 className="date-placeholder">{day.date}</h5>
+
+              {day.treatments.map(treatment =>
+                <article key={treatment._id} className="treatment-article" >
+
+                  <h2>{treatment.title}</h2>
+                  <p><strong>{moment(treatment.dateTime).calendar()}</strong></p>
+                  <p>{treatment.notes}</p>
+                  {moment(treatment.dateTime).format('MM-DD-YYYY') === moment(Date.now()).format('MM-DD-YYYY') && <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>}
+
+                </article>
+              )}
+              <hr />
+            </div>
+
+          )}
+
         </section>}
       </section>
     );
