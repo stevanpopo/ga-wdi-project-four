@@ -2,6 +2,7 @@ const User = require('../models/user');
 
 function showRoute(req, res, next){
   User.findById(req.params.id)
+    .populate('treatments')
     .then(user => {
       // console.log('dealing with request');
       // console.log('currentUser', req.currentUser);

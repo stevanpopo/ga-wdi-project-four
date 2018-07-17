@@ -21,7 +21,7 @@ const { JSDOM } = require('jsdom');
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
 
-window.localStorage = (function(){
+global.localStorage = window.localStorage = (function(){
   var storage = {};
 
   return {
@@ -43,7 +43,9 @@ function Map() {
 function Marker() {
   this.setMap = function() {};
 }
+
 function Autocomplete() {}
+
 global.google = {
   maps: {
     Map,

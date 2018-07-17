@@ -35,7 +35,7 @@ const data = [{
   notes: 'To be taken before eating breakfast.'
 }];
 
-describe('CriminalsIndex tests', () => {
+describe('TreatmentsIndex tests', () => {
   let wrapper;
   let promise;
 

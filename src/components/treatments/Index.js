@@ -29,9 +29,7 @@ class TreatmentsIndex extends React.Component{
   }
 
   componentDidMount(){
-    axios({
-      url: '/api/treatments',
-      method: 'GET',
+    axios.get('/api/treatments', {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => {

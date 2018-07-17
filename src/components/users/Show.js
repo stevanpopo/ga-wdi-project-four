@@ -156,8 +156,24 @@ class UsersShow extends React.Component{
       .catch(err => console.log('err', err));
   }
 
+  formatDates(treatmentsArray){
+
+    function formatDate(date) {
+      if(moment(date).isSame(moment(), 'day')) return 'Today';
+      if(moment(date).isSame(moment().add(1, 'day'), 'day')) return 'Tomorrow';
+      return moment(date).fromNow();
+    }
+
+    return treatmentsArray.reduce((formattedArray, treatment) => {
+      const day = formattedArray.find(day => day.date === formatDate(treatment.dateTime));
+      if (day) day.treatments.push(treatment);
+      else formattedArray.push({ date: formatDate(treatment.dateTime), treatments: [treatment]});
+      return formattedArray;
+    }, []);
+  }
+
   render(){
-    // console.log('this.state', this.state);
+    console.log('this.state', this.state);
     if(!this.state.user) return <h2 className="title is-2">Loading...</h2>;
     return(
       <section>
