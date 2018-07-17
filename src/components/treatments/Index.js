@@ -53,7 +53,7 @@ class TreatmentsIndex extends React.Component{
 
 
 
-            <div key={treatment._id}>
+            <div key={treatment._id} className="treatment-index">
               {moment(treatment.dateTime).format('YYYY-MM-DD').toString() === moment(Date.now()).format('YYYY-MM-DD').toString() && <h5>Today</h5>}
 
               {moment(treatment.dateTime).format('YYYY-MM-DD').toString() === moment(Date.now()).add(1, 'days').format('YYYY-MM-DD').toString() && <h5>Tomorrow</h5>}
@@ -63,6 +63,8 @@ class TreatmentsIndex extends React.Component{
               && moment(treatment.dateTime).format('YYYY-MM-DD').toString()
               <= moment(Date.now()).add(2, 'days').format('YYYY-MM-DD').toString()
               && <h5>Later in the week</h5>}
+
+              <h5 className="date-placeholder"></h5>
 
               <article className="treatment-article" >
 

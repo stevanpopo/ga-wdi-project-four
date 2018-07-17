@@ -12,12 +12,18 @@ class TreatmentsNew extends React.Component{
       errors: {},
       typeOfCare: 'medicine', // form defaults to medicine
       owner: Auth.getPayload().currentUser, // set the owner to be logged in user
-      startDate: moment(Date.now())
+      dateTime: moment()
     };
   }
 
   handleChange = ({ target: { name, value }}) => {
     this.setState({ [name]: value });
+  }
+
+  handleDate = (e) => {
+    // find the thing you need from date component
+    // console.log(e);
+    this.setState({ dateTime: e });
   }
 
   handleSubmit = (e) => {
@@ -47,6 +53,7 @@ class TreatmentsNew extends React.Component{
         handleChange={this.handleChange}
         data={this.state}
         toggleForm={this.toggleForm}
+        handleDate={this.handleDate}
       />
     );
   }

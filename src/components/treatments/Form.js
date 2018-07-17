@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm }) => {
+const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm, handleDate }) => {
   console.log('data', data);
   return(
     <section>
@@ -37,13 +37,16 @@ const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm }) => {
             <div className="field">
               <label className="label">Date & Time</label>
               <DatePicker
+                autoComplete="off"
                 className="input"
                 name="dateTime"
-                selected={data.startDate}
-                onChange={handleChange}
-                value={data.dateTime || '' }
+                selected={data.dateTime}
+                onChange={handleDate}
                 showTimeSelect
+                timeIntervals={15}
                 dateFormat="LLL"
+                timeFormat="HH:mm"
+                timeCaption="time"
               />
             </div>
             <div className="field">
