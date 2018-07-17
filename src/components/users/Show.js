@@ -31,7 +31,6 @@ class UsersShow extends React.Component{
 
   getChartData(){
     // axios call here
-    console.log('in getChartData');
     axios({
       method: 'GET',
       url: '/api/records',
@@ -39,7 +38,6 @@ class UsersShow extends React.Component{
     })
       .then(res => {
         //structure data
-        console.log('res.data', res.data);
         const weight = [];
         const blood = [];
         const glucose = [];
@@ -119,7 +117,6 @@ class UsersShow extends React.Component{
   componentWillReceiveProps = (nextProps) => {
     const currentId = this.state.user._id;
     const nextId = nextProps.match.params.id;
-    console.log(currentId, nextId);
     if (currentId && currentId !== nextId) {
 
       axios({
@@ -147,7 +144,6 @@ class UsersShow extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting the form', this.state);
     axios({
       method: 'POST',
       url: '/api/records',

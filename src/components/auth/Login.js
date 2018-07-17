@@ -22,7 +22,8 @@ class AuthLogin extends React.Component{
     })
       .then(res => {
         Auth.setToken(res.data.token);
-        this.props.history.push('/treatments');
+        if(res.data.user.patient) this.props.history.push('/treatments');
+        else this.props.history.push(`/users/${res.data.user._id}`);
       })
       .catch(()=> {
         Flash.setMessage('danger', 'Incorrect credentials.');
