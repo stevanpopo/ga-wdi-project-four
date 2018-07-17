@@ -168,13 +168,16 @@ class UsersShow extends React.Component{
         <h1>{this.state.user.username}</h1>
         <h1>{this.state.user.email}</h1>
         <p>{this.state.user.telephone}</p>
-        <ul>
-          {this.state.populatedLovedOnes.map((person) =>
-            <li key={person._id}>
-              <Link  to={`/users/${person._id}`}>{person.username} | {person._id}</Link>
-            </li>
-          )}
-        </ul>
+        <p>You can view your loved ones profiles here:</p>
+        <div className="content">
+          <ul>
+            {this.state.populatedLovedOnes.map((person) =>
+              <li key={person._id}>
+                <Link  to={`/users/${person._id}`}>{person.username}</Link>
+              </li>
+            )}
+          </ul>
+        </div>
         <Link to={`/users/${this.state.user._id}/edit`} className="button">Edit</Link>
 
         {this.state.user.patient && this.state.user._id === Auth.getPayload().currentUser._id && <section>

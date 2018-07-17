@@ -69,8 +69,6 @@ class TreatmentsIndex extends React.Component{
         <div>
           {this.state.treatments.map(day =>
 
-
-
             <div key={day.date} className="treatment-index">
 
               <h5 className="date-placeholder">{day.date}</h5>
