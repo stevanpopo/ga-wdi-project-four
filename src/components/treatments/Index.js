@@ -65,8 +65,11 @@ class TreatmentsIndex extends React.Component{
     return (
       <section className="section">
         <h4>Your treatment plan</h4>
+        <hr />
         <div>
           {this.state.treatments.map(day =>
+
+
 
             <div key={day.date} className="treatment-index">
 

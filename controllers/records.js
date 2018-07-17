@@ -14,8 +14,12 @@ function showRoute(req, res, next){
 }
 
 function indexRoute(req, res, next){
-  Record.find({ user: req.headers.recordsowneris})
-    .then(records => res.json(records))
+  // console.log(req.headers.recordsowneris);  user: req.headers.recordsowneris 
+  Record.find({})
+    .then(records => {
+      console.log('records', records);
+      res.json(records);
+    })
     .catch(next);
 }
 

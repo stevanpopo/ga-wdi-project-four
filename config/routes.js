@@ -22,7 +22,7 @@ routes.route('/alltreatments')
 
 routes.route('/records')
   .post(records.create)
-  .get(secureRoute, records.index);
+  .get(records.index);
 
 routes.route('/records/:id')
   .put(records.update)

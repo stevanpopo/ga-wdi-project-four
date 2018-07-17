@@ -31,6 +31,7 @@ class UsersShow extends React.Component{
 
   getChartData(){
     // axios call here
+    console.log('in getChartData');
     axios({
       method: 'GET',
       url: '/api/records',
@@ -38,6 +39,7 @@ class UsersShow extends React.Component{
     })
       .then(res => {
         //structure data
+        console.log('res.data', res.data);
         const weight = [];
         const blood = [];
         const glucose = [];
@@ -138,8 +140,6 @@ class UsersShow extends React.Component{
     }
   }
 
-
-
   handleChange = ({ target: { name, value }}) => {
     const formData = { ...this.state.formData, [name]: value };
     this.setState({ formData });
@@ -147,6 +147,7 @@ class UsersShow extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Submitting the form', this.state);
     axios({
       method: 'POST',
       url: '/api/records',
