@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm, handleDate }) => {
-  console.log('data', data);
+  // console.log('data', data);
   return(
     <section>
       <div className="columns is-centered">
@@ -29,11 +29,6 @@ const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm, handleDa
               <input className="input" name="title" placeholder="Title" onChange={handleChange} value={data.title || '' } />
               {data.errors.title && <small>{data.errors.title}</small>}
             </div>
-            {/* <div className="field">
-              <label className="label">Date & Time</label>
-              <input className="input" name="dateTime" placeholder="Date & Time" onChange={handleChange} value={data.dateTime || '' } />
-              {data.errors.dateTime && <small>{data.errors.dateTime}</small>}
-            </div> */}
             <div className="field">
               <label className="label">Date & Time</label>
               <DatePicker
