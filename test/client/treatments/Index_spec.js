@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import sinon from 'sinon';
 import axios from 'axios';
 import Promise from 'bluebird';
-// import _ from 'lodash';
+import _ from 'lodash';
 
 import TreatmentsIndex from '../../../src/components/treatments/Index';
 
@@ -66,6 +66,17 @@ describe('TreatmentsIndex tests', () => {
       done();
     })
       .catch(err => console.log(err));
+  });
+
+  it('should render the correct data', done => {
+    promise.then(() => {
+      wrapper.update();
+      _.orderBy(data, ['dateTime']).forEach((treatment, index) => {
+        expect(wrapper.find('h2').at(index).text()).to.eq(treatment.title);
+        expect(wrapper.find('Link').at(index).prop('to')).to.eq(`/treatments/${treatment._id}`);
+      });
+      done();
+    });
   });
 
 });
