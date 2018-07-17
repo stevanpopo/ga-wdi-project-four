@@ -22,7 +22,6 @@ class TreatmentsIndex extends React.Component{
 
     return treatmentsArray.reduce((formattedArray, treatment) => {
       const day = formattedArray.find(day => day.date === formatDate(treatment.dateTime));
-      console.log(day);
       if (day) day.treatments.push(treatment);
       else formattedArray.push({ date: formatDate(treatment.dateTime), treatments: [treatment]});
       return formattedArray;
@@ -57,11 +56,10 @@ class TreatmentsIndex extends React.Component{
       }
       return treatment;
     });
-    this.setState({ treatments}, console.log(this.state));
+    this.setState({ treatments});
   }
 
   render(){
-    console.log(this.state);
     if(this.state.error) return <h2 className="title is-2">{this.state.error}</h2>;
     if(!this.state.treatments) return <h2 className="title is-2">Loading...</h2>;
     return (
@@ -86,8 +84,6 @@ class TreatmentsIndex extends React.Component{
                   <p><strong>{moment('2018-07-27T13:00:03.000Z').calendar()}</strong></p> */}
                   <p>{treatment.notes}</p>
                   {moment(treatment.dateTime).format('MM-DD-YYYY') === moment(Date.now()).format('MM-DD-YYYY') && <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>}
-
-                  {/* moment(treatment.dateTime).format('MM-DD-YYYY') === moment(Date.now()).format('MM-DD-YYYY') */}
 
                 </article>
               )}
