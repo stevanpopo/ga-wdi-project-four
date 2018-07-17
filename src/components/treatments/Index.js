@@ -12,6 +12,23 @@ class TreatmentsIndex extends React.Component{
     this.state = {};
   }
 
+  formatDates(treatmentsArray){
+
+    function formatDate(date) {
+      if(moment(date).isSame(moment(), 'day')) return 'Today';
+      if(moment(date).isSame(moment().add(1, 'day'), 'day')) return 'Tomorrow';
+      return moment(date).fromNow();
+    }
+
+    return treatmentsArray.reduce((formattedArray, treatment) => {
+      const day = formattedArray.find(day => day.date === formatDate(treatment.dateTime));
+      console.log(day);
+      if (day) day.treatments.push(treatment);
+      else formattedArray.push({ date: formatDate(treatment.dateTime), treatments: [treatment]});
+      return formattedArray;
+    }, []);
+  }
+
   componentDidMount(){
     axios({
       url: '/api/treatments',
@@ -19,7 +36,8 @@ class TreatmentsIndex extends React.Component{
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
       .then(res => {
-        this.setState({ treatments: res.data });
+        const dateArray = this.formatDates(res.data);
+        this.setState({ treatments: dateArray });
       })
       .catch(err => console.log('err', err));
   }
@@ -49,33 +67,25 @@ class TreatmentsIndex extends React.Component{
       <section className="section">
         <h4>Your treatment plan</h4>
         <div>
-          {this.state.treatments.map(treatment =>
+          {this.state.treatments.map(day =>
 
+            <div key={day.date} className="treatment-index">
 
+              <h5 className="date-placeholder">{day.date}</h5>
 
-            <div key={treatment._id} className="treatment-index">
-              {moment(treatment.dateTime).format('YYYY-MM-DD').toString() === moment(Date.now()).format('YYYY-MM-DD').toString() && <h5>Today</h5>}
+              {day.treatments.map(treatment =>
+                <article key={treatment._id} className="treatment-article" >
 
-              {moment(treatment.dateTime).format('YYYY-MM-DD').toString() === moment(Date.now()).add(1, 'days').format('YYYY-MM-DD').toString() && <h5>Tomorrow</h5>}
+                  <Link to={`/treatments/${treatment._id}`}>
+                    <h2>{treatment.title}</h2>
+                  </Link>
+                  <p><strong>{moment(treatment.dateTime).calendar()}</strong></p>
+                  <p>{treatment.notes}</p>
+                  <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>
 
-              {moment(treatment.dateTime).format('YYYY-MM-DD').toString() >=
-              moment(Date.now()).add(2, 'days').format('YYYY-MM-DD').toString()
-              && moment(treatment.dateTime).format('YYYY-MM-DD').toString()
-              <= moment(Date.now()).add(2, 'days').format('YYYY-MM-DD').toString()
-              && <h5>Later in the week</h5>}
-
-              <h5 className="date-placeholder"></h5>
-
-              <article className="treatment-article" >
-
-                <Link to={`/treatments/${treatment._id}`}>
-                  <h2>{treatment.title}</h2>
-                </Link>
-                <p><strong>{moment(treatment.dateTime).format('YYYY-MM-DD')} | {moment(treatment.dateTime).format('HH:mm:ss')}</strong></p>
-                <p>{treatment.notes}</p>
-                <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>
-
-              </article>
+                </article>
+              )}
+              <hr />
             </div>
 
 

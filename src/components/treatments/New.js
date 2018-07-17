@@ -21,8 +21,6 @@ class TreatmentsNew extends React.Component{
   }
 
   handleDate = (e) => {
-    // find the thing you need from date component
-    // console.log(e);
     this.setState({ dateTime: e });
   }
 
