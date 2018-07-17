@@ -177,8 +177,8 @@ class UsersShow extends React.Component{
     if(!this.state.user) return <h2 className="title is-2">Loading...</h2>;
     return(
       <section>
-        <h1>{this.state.user.username}</h1>
-        <h1>{this.state.user.email}</h1>
+        <h4>{this.state.user.username}</h4>
+        <h4>{this.state.user.email}</h4>
         <p>{this.state.user.telephone}</p>
         <p>You can view your loved ones profiles here:</p>
         <div className="content">
@@ -237,6 +237,8 @@ class UsersShow extends React.Component{
         </section>}
 
         {this.state.user.patient && this.state.user._id !== Auth.getPayload().currentUser._id && <section>
+
+          <h3>{this.state.user.username}&#39;s Upcoming Treatments</h3>
           {this.formatDates(this.state.user.treatments).map(day =>
 
             <div key={day.date} className="treatment-index">
@@ -246,9 +248,8 @@ class UsersShow extends React.Component{
               {day.treatments.map(treatment =>
                 <article key={treatment._id} className="treatment-article" >
 
-                  <h2>{treatment.title}</h2>
+                  <h4 className='header-4-blue'>{treatment.title}</h4>
                   <p><strong>{moment(treatment.dateTime).calendar()}</strong></p>
-                  <p>{treatment.notes}</p>
                   {moment(treatment.dateTime).format('MM-DD-YYYY') === moment(Date.now()).format('MM-DD-YYYY') && <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>}
 
                 </article>
