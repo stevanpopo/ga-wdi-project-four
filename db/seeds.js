@@ -50,7 +50,7 @@ mongoose.connect(dbURI, (err, db) => {
       console.log(`${users.length} users created.`);
       Treatment.create([{
         dateTime: new Date('July 18, 2018 06:00:00'),
-        title: 'Morning pills x 3 - this is the new date',
+        title: 'Morning pills x 3',
         completed: false,
         owner: users[0],
         image: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775_960_720.jpg',

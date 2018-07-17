@@ -63,6 +63,10 @@ class AuthRegister extends React.Component{
               <label className="label">Telephone (optional)</label>
               <input className="input" name="telephone" placeholder="Telephone" onChange={this.handleChange} />
             </div>
+            <div className="field">
+              <label className="label">Loved Ones (optional)</label>
+              <input className="input" name="lovedOnes" placeholder="Loves ones..." onChange={this.handleChange} />
+            </div>
 
             <button className="button">Submit</button>
           </form>
