@@ -69,7 +69,8 @@ mongoose.connect(dbURI, (err, db) => {
         owner: users[0],
         image: 'https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1986133/580/386/m1/fpnw/wm0/calendar-flat-line-icon-01-.jpg',
         notes: 'Will do blood test and dialysis treatment.',
-        location: 'Edgware Hospital'
+        location: 'Edgware Hospital',
+        notifications: true
       },{
         dateTime: new Date('July 20, 2018 06:00:00'),
         title: 'Morning pills x 3',
@@ -84,7 +85,8 @@ mongoose.connect(dbURI, (err, db) => {
         owner: users[0],
         image: 'https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1986133/580/386/m1/fpnw/wm0/calendar-flat-line-icon-01-.jpg',
         notes: 'Will do blood test and dialysis treatment.',
-        location: 'Edgware Hospital'
+        location: 'Edgware Hospital',
+        notifications: true
       },{
         dateTime: new Date('July 22, 2018 06:00:00'),
         title: 'Morning pills x 3',
