@@ -81,6 +81,7 @@ class TreatmentsIndex extends React.Component{
                   <p><strong>{moment(treatment.dateTime).calendar()}</strong></p>
                   <p>{treatment.notes}</p>
                   <p>{treatment.location}</p>
+                  {treatment.notifications && <p> SMS notifications: On</p>}
                   {moment(treatment.dateTime).format('MM-DD-YYYY') === moment(Date.now()).format('MM-DD-YYYY') && <p onClick={() => this.toggleTreatment(treatment)}>Treatment completed? <span className="treatment-completed-button">{treatment.completed.toString()}</span></p>}
 
                 </article>
