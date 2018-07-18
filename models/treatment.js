@@ -7,7 +7,8 @@ const treatmentSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.ObjectId, ref: 'User' },
   image: { type: String },
   location: { type: String },
-  notes: { type: String, required: 'Notes is a required field.' }
+  notes: { type: String, required: 'Notes is a required field.' },
+  notifications: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Treatment', treatmentSchema);

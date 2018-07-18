@@ -12,7 +12,7 @@ const { port, dbURI } = require('./config/environment');
 app.use(express.static(`${__dirname}/public`));
 mongoose.connect(dbURI);
 
-// app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.use(bodyParser.json());
 app.use('/api', routes);

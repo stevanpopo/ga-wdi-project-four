@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm, handleDate }) => {
-  // console.log('data', data);
+  console.log('data', data);
   return(
     <section>
       <div className="columns is-centered">
@@ -59,6 +59,19 @@ const TreatmentsForm = ({ handleSubmit, handleChange, data, toggleForm, handleDa
               <input className="input" name="location" placeholder="Location" onChange={handleChange} value={data.location || '' } />
               {data.errors.location && <small>{data.errors.location}</small>}
             </div>}
+            {/* <div className="field">
+              <label className="label">Notifications</label>
+              <div className="control">
+                <label className="radio">
+                  <input type="radio" name="notifications" value="on"  onChange={handleChange} />
+                  On
+                </label>
+                <label className="radio">
+                  <input type="radio" name="notifications"  value="off"  onChange={handleChange}/>
+                  Off
+                </label>
+              </div>
+            </div> */}
 
             <button className="button">Submit</button>
           </form>
