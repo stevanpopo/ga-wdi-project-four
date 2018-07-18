@@ -7,7 +7,6 @@ const User = require('../models/user');
 
 mongoose.connect(dbURI, (err, db) => {
   db.dropDatabase();
-  let savedUsers;
   User.create([{
     username: 'Steve',
     email: 's@s.s',
@@ -46,7 +45,6 @@ mongoose.connect(dbURI, (err, db) => {
     lovedOnes: ['a@a.a', 's@s.s']
   }])
     .then(users => {
-      savedUsers = users;
       console.log(`${users.length} users created.`);
       Treatment.create([{
         dateTime: new Date('July 18, 2018 06:00:00'),
