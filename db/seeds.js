@@ -128,7 +128,8 @@ mongoose.connect(dbURI, (err, db) => {
         completed: false,
         owner: users[0],
         image: 'https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1986133/580/386/m1/fpnw/wm0/calendar-flat-line-icon-01-.jpg',
-        notes: 'Will do blood test and dialysis treatment.'
+        notes: 'Will do blood test and dialysis treatment.',
+        notifications: true
       }]);
 
       return Record.create([{
