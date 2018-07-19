@@ -1,5 +1,5 @@
 ![image](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
-# GA WDI Project Four - YourCare
+# GA WDI Project Four - YourCare (A MERN Stack App)
 
 This was the fourth project assignment during my time on General Assembly's Web Development Immersive Course (week 10-11). I built a product for people in long term medical care. The app allows users to:
 * Track their upcoming medical appointments and medicine schedules.
@@ -101,6 +101,11 @@ Some features I could add moving forward:
 * Google Calendar API for calendar integration.
 * Customer data tracking. I.e. The user can add/edit what medical data points they want to track (so care can be more customised).
 * Add an opt-in email summary that sends a weekly update to family members (using Nodemailer or Mailchimp API).
+
+## Other GA projects
+* [Project One (Browser-based game)](https://github.com/stevanpopo/ga-wdi-project-one)
+* [Project Two (Express full-stack app)](https://github.com/stevanpopo/ga-wdi-project-two)
+* [Project Three (MEAN stack app - group project)](https://github.com/stevanpopo/ga-wdi-project-three)
 
 ## Contact Me
 Feel free to ask me questions about this project or anything else [on twitter](https://twitter.com/StevanPopo).
